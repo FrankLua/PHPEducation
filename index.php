@@ -8,25 +8,24 @@
 </head>
 
 <body>
-    <?php
-    $nickName = "SashaNaymov228f";    
-    $arrayChars = str_split($nickName, 1);
-    
-    $arrayUnique = [];
-        foreach ($arrayChars as $key=>$char) {
-            if(!in_array($char,$arrayUnique)){
-                $arrayUnique[$key] = $char;
-        }       
-}
-$lenthUniqueArray = count($arrayUnique);
-        echo "NickName: " . $nickName . "<br>";
-        echo "Length unique chars : " . count($arrayChars) . "<br>";
-        if(($lenthUniqueArray %2) == 0){            
-            echo "Sex: Man";            
+    <form method="get" action="">
+        <input type="text" name = "first"><br>
+        <input type="text" name = "second"><br>
+        <input type="submit" value="Send">
+    </form>  
+
+
+
+
+    <?php if(empty($_GET['first']) && empty($_GET['second'])){
+        exit("The fields input is not filled");
     }
     else{
-        echo "Sex: Woman";
-    }
+        echo '<br>';
+        echo print_r($_GET);
+        echo '<br>';
+    } 
+
 
 ?>
 
