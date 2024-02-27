@@ -6,4 +6,3 @@ foreach ($nickNames as $nick) {
 }
 
 
-?>
