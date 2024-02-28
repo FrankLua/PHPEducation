@@ -7,7 +7,7 @@
     <title>Css</title>
 </head>
 <body>
-    <div class="div1">
+    <div class="div-table div-bold"> <!--  У тегов может быть много классов отделяются они пробелом -->
         <table border="1">
             <thead>
                 <th>
@@ -41,10 +41,50 @@
             </tfoot>
          </table>
     </div>
-    <div id = "mainDiv">
-        d
+    <div id = "imgDiv">
+        <ol>
+            <li >
+                <img height = "450" src="https://sun9-24.userapi.com/impg/S9-lrN9iFBD9HbfuHY0kRVDLaugQEbmRQ1z8-g/1Aq-n1JaE58.jpg?size=706x720&quality=95&sign=fb055a61112e0a625a9ee934b6e57ab9&type=album" alt="">
+            </li>
+        </ol>           
 
     </div>
+    <p id="primer-id">
+        Пример для применения атрибута "id"
+    </p>
+    <hr>
+    <h2>Пример для проверки уровня вложенности</h2>
+    <ol class="ol-red">
+        <li>
+            Первый Красный
+        </li>
+        <li>
+            Второй Красный
+        </li>
+        <ol>
+            <li>
+                Третий - первый оранженвый
+            </li>
+            <li>
+                Третий - второй оранженвый
+            </li>
+        </ol>
+    </ol>
+    <hr>
+    <a class="md-size color-red" href="#">Ссылка красная</a> <!-- работают только тогда когда два класса вместе -->
+    <br>
+    <a class="md-size color-yellow" href="#">Ссылка желтая</a>
+    <br>
+    <a class="color-blue" href="#">стандартный цвет цвета</a>
+    <hr>
+    <img src="https://luxe-host.ru/wp-content/uploads/4/a/c/4ac65a9bdd2d0b54028e6fce269cd8bb.jpeg" alt="" height=" 400" width="400">
+    <hr>
+    <h2> Приоритет к стилям </h2>
+    <ol>
+        <li style="color: rgb(255, 5, 5);"> html </li>
+        <li style="color: rgb(255, 5, 5);"> id </li>
+    </ol>
+    
     
 </body>
 </html>

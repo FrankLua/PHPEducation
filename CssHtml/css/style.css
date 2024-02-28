@@ -1,7 +1,43 @@
 [id = "#mainDiv"]
 {
- color: red;
+ color: blue;
 }
 .div1{
+   
+}
+img[height = "450"]{  /* Поиск по атрибуту тега */
+    height: 250px;
+}
+[class="div1"]{ /* Поиск по атрибуту тега */
+    color: blue;
+}
+.div-table{ /*Поиск по классу*/
+    color: green    ;
+}
+.div-bold{
+    font-weight:bold;
+}
+/* id у тега в html не может повторяться #header*/
+
+#primer-id{
+    color: blueviolet;
+}
+html td { /* Применится стиль текста ко всем tr тегам наслдующиеся от html*/
+    color:aqua
+}
+
+ol >li{
+    color: orange;   
+}
+.ol-red >li{
     color: red;
+}
+.md-size{
+    size:18px;
+}
+.md-size.color-red{
+    color: red;
+}
+.md-size.color-yellow{
+    color: yellow;
 }
