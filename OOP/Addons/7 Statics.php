@@ -7,7 +7,7 @@ class Room{
     }
 }
 Room::GetType(); 
-echo Room::$type;
+echo Room::$type; 
 $myRoom = new Room(); 
 $myRoom::GetType();
 echo $myRoom::$type; // у экземпляра класса поле статик тоже доступно 
