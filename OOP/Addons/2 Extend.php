@@ -35,11 +35,11 @@ class User {
 
 class Moderator extends User {
     public int $number;
-    
     function __construct(string $name, string $lastName, string $email, int $number) {
         parent::__construct($name,$lastName,$email); // parent:: Вызывает метод родителя
         $this->number = $number;
        }
+    
 
     
     function getName():string { // метод переопределён 

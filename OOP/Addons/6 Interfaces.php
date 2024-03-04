@@ -3,12 +3,13 @@
 interface IMyInterfaceOne{ // Указывают какие методы нужно реализовать классу 
     //Интерфейсы могут определять магические методы
     
-    const CONST = 1; //Можео определять константы
+    const CONST = 1; //Может определять константы
     function getName():string; //Все методы, определённые в интерфейсах, должны быть общедоступными, что следует из самой природы интерфейса.
 
 }
 interface IMyInterfaceTwo{ // Отличается от абстрактных классов тем что не реализуют методы 
-    function getLastName():string; 
+    function getLastName(int $i):string; 
+    function getName(int $i):string;
 }
 class MyClass implements IMyInterfaceOne, IMyInterfaceTwo{ // Наследует интерфейс
     private string $name = "testINT";
@@ -17,10 +18,11 @@ class MyClass implements IMyInterfaceOne, IMyInterfaceTwo{ // Наследует
         echo self::CONST; 
         return $this->lastName;
     }
-    public function getName():string{
+    public function getName(int $i):string{
         return $this->name;        
 
     }
+    
 }
 $class = new MyClass();
 $class->getLastName();

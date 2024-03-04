@@ -11,6 +11,12 @@ class Zookeeper{
         if($cell->type == ControlAnimal::Mammal) return $this->findMammal($cell,$countLimbs);
         else return $this->findBird($cell,$countLimbs);        
     }
+    
+    
+
+
+
+
     private function findBird($cell,int $winds){
         foreach($cell->animals as $animal){
             if($animal->wings == $winds) return $animal;           
@@ -18,12 +24,12 @@ class Zookeeper{
     }
     private function findFish($cell,int $tails){
         foreach($cell->animals as $animal){
-            if($animal->wings == $tails) return $animal;           
+            if($animal->tails == $tails) return $animal;           
         }  
     }
     private function findMammal($cell,int $legs){
         foreach($cell->animals as $animal){
-            if($animal->wings == $legs) return $animal;           
+            if($animal->legs == $legs) return $animal;           
         }  
     }
 }

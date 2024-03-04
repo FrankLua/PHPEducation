@@ -115,15 +115,15 @@ trait Bb {
 
 class Talker {
     use Aa, Bb {
-        Bb::smallTalk insteadof A;// Использует метод трейта А
-        Aa::bigTalk insteadof B; // Использует метод трейта В
+        Bb::smallTalk insteadof Aa;// Использует метод трейта А
+        Aa::bigTalk insteadof Bb; // Использует метод трейта В
     }
 }
 
 class Aliased_Talker {
     use Aa, Bb {
-        Bb::smallTalk insteadof A;
-        Aa::bigTalk insteadof B;
+        Bb::smallTalk insteadof Aa;
+        Aa::bigTalk insteadof Bb;
         Bb::bigTalk as talk; // Использует реализацию метода bigTalk из класса B под дополнительным псевдонимом talk
         Bb::smallTalk as private; //Использует методо smallTalk как приватный
     }
@@ -150,6 +150,7 @@ class MyClass2 {
 Трейты поддерживают абстрактные методы, чтобы установить требования к классу, в который будет включён трейт.
 <?php
 trait Hello {
+    const INTCONST= 5;
     public function sayHelloWorld() {
         echo 'Hello'.$this->getWorld();
     }

@@ -1,14 +1,23 @@
 <?php
 class MyClass // Константы статичны разница между readonly и контантой состоит в том что у константы нельзя задавать в контрукторе, но они статичны readonly не статичен
 {
-    const CONSTANT = 'значение константы';
+    private const CONSTANT = new MyClass(); /* 
+    __CLASS__ — текущее имя класса
+    __METHOD__ — текущее имя метода
+    */
+    
+
 
 
 
     function showConstant() {
-        echo  self::CONSTANT . "\n";
+        MyClass::CONSTANT;
+        echo  self::CONSTANT . "\n"; 
     }
 }
+
+
+
 
 echo MyClass::CONSTANT . "\n"; //Вызыв констатны как статики
 
@@ -45,25 +54,33 @@ echo $foo2::TWO;
 //======================Fields 
 class FieldClass{
 
-
-
+    protected final function lastMEthod(){
+        echo "lastMethod";
+    }
     // Без модификатора области видимости:
-    readonly string $type1; // Доступен в экземпляре
+    readonly mixed $type1; // Доступен в экземпляре
 
     private readonly string $type2;
 
     private static string $type3;
 
-    static string $type4 = "type4"; // Доступен в статике
+    static string $type4 = 0; // Доступен в статике
     function __construct(){
         self::$type1 = "type1";
+        ++self::$type4;
     }
 
 }
 
+
 echo FieldClass::$type4;
-class User
+class User extends FieldClass
 {
+    /*
+    protected final function lastMEthod(){
+
+    } ошбика нельзя переопределять методы помеченные ключевым словом final
+    */
     public int|null $id; // == ?int
     public ?string $name;
 

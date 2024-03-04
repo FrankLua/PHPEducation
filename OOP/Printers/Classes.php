@@ -2,20 +2,20 @@
  class Writer{
     private $textForWrite;
     public function Write(string $text){
-        $textForWrite = "Вывод текста " . $text;
-        echo $textForWrite;
+        $textForWrite = "<--  Этот текст напечатан";
+        echo $text . " ".$textForWrite. PHP_EOL;
     }
 }
 class WriterOnPrinter extends Writer{
     public function WriteOnPrint(string $text){
-        $textForWrite = "Этот текст напечатан на бумаге бумаге";
-        echo $text ." ". $textForWrite;
+        $textForWrite = "<-- Этот текст напечатан на бумаге";
+        echo $text ." ". $textForWrite. PHP_EOL;
     }
 }
 class WriterOnScreen extends Writer{
     public function WriteOnScreen(string $text){
-        $textForWrite = "Этот текст отображается на экране монитора";
-        echo $text ." ".$textForWrite;
+        $textForWrite = "<-- Этот текст отображается на экране монитора";
+        echo $text." ".$textForWrite. PHP_EOL;
     }
 }
 

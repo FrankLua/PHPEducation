@@ -12,11 +12,13 @@ $myClass = new MyClass();
 
 var_dump($myClass);
 
-//$myClass->foo = ""; Ошибка приватное поле нельзя менять
+//$myClass->foo = ""; Ошибка redonly поле нельзя менять
 
 /*readonly*/ class  Foo // нельзя объявить readonly класс
 {
     public int $bar = 5; // нужно обязательно добавить тип данных
+
+    //public readonly $baz ; // Ошибка
 
     
 }
@@ -44,7 +46,7 @@ class Foo2{
 $instance = new Foo2();
 
 $assigned   =  $instance;
-$reference  =& $instance;
+$reference  = & $instance;
 
 $instance->foo= '$assigned будет иметь это значение';
 
@@ -54,26 +56,7 @@ var_dump($instance);
 var_dump($reference);
 var_dump($assigned);
 
-class Test
-{
-    static public function getNew()
-    {
-        return new static;
-    }
-}
 
-class Child extends Test //Способы создания нового объекта
-{}
-
-$obj1 = new Test();
-$obj2 = new $obj1;
-var_dump($obj1 === $obj2);
-
-$obj3 = Test::getNew();
-var_dump($obj3 instanceof Test);
-
-$obj4 = Child::getNew();
-var_dump($obj4 instanceof Child);
 
 
 echo (new DateTime())->format('Y'); //Доступ к свойствам/методам только что созданного объекта

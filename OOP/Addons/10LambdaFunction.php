@@ -3,7 +3,8 @@
 $message = 'привет';
 
 // Наследуем $message
-$example = function () use ($message) {
+$example = function () { 
+
     var_dump($message);
 };
 $example();
@@ -25,7 +26,7 @@ $example();
 // Изменённое в родительской области видимости значение
 // остаётся тем же внутри вызова функции
 $message = 'мир';
-echo $example();
+$example();
 
 // Замыкания могут принимать обычные аргументы
 $example = function ($arg) use ($message) {

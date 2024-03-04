@@ -4,6 +4,7 @@ include_once("Domain/Creature.php");
 include_once("Domain/Bird.php");
 include_once("Domain/Fish.php");
 include_once("Domain/Mammal.php");
+include_once("Domain/People/People.php");
 include_once("Domain/Cells/Cell.php");
 include_once("Domain/Cells/CellStore.php");
 include_once("Domain/Personal/Manager.php");
@@ -12,66 +13,22 @@ include_once("Enum/ControlAnimal.php");
 include_once("Factory.php");
 
 
+$birds = [ new Bird(rand(0,100),"Kolibri"),new Bird(rand(0,100),"Soika")];
+$mammls = [ new Mammal(rand(0,100),"Monkey Bob")];
+$fish = [new Fish(rand(0,100),"Reks")];
 
-$bird = CreatureFactory::create(ControlAnimal::Bird,random_int(0,100)); // Фабрика животных  по которолу определяет какой тип животного создать, далее параметр конечностей (хвост,ноги,крылья)
-$mammal = CreatureFactory::create(ControlAnimal::Mammal,random_int(0,100));
-$fish = CreatureFactory::create(ControlAnimal::Fish,random_int(0,100));
+$animals = array_merge($birds,$mammls, $fish);
 
-echo "=======Animals=======";
-echo "<br>";
-print_r($bird);
-echo "<br>";
-print_r($mammal);
-echo "<br>";
-print_r($fish);
-echo "<br>";
+$humans = [
+    new Human("Nina",new Interest(null,kind:ControlAnimal::Bird)),   
+    new Human("Andrey",new Interest("Monkey Bob",ControlAnimal::Mammal)),
+    new Human("Pavel",new Interest("Monkey Bob",ControlAnimal::Mammal))
+];
 
+$store = new CellsStore($animals);// Клетки
+$zookeeper = new Zookeeper();
+$zookeeper->setAnimalToCell($store,new Bird(rand(0,100),"ddd")); // Клетка переполнена
 
+$store->setHumans($humans);
+$store->setHumans($humans);
 
-
-
-$store = new CellsStore();// Клетки
-echo "=======CellsStore=======";
-echo "<br>";
-print_r($store);
-echo "<br>";
-
-
-$store->createCell(ControlAnimal::Bird); // Создаёт клетку для нужного царства
-$cellFromStore = $store->getCell(ControlAnimal::Bird); // Получает клетку по царству
-
-echo "=======CellsFromStore=======";
-echo "<br>";
-print_r($cellFromStore);
-echo "<br>";
-
-
-$cellFromStore->addAnimal($bird); // Добавить в клетку животное
-$animalFromCell = $cellFromStore->getAnimal(); // Получаем животное из клетки
-echo "=======CellsStore=======";
-echo "<br>";
-print_r($store);
-echo "<br>";
-
-echo "=======AnimalFromCell=======";
-echo "<br>";
-print_r($animalFromCell);
-echo "<br>";
-
-$zookeeper = new Zookeeper(); // Смотритель
-$countLimbs = $bird->wings; //Параметры животного
-
-$animalFromZookeeper = $zookeeper->selectAnimal($store,$countLimbs,ControlAnimal::Bird);// Поиск животного по заданным параметрам в хранилище клеток
-echo "=======AnimalFromZookeeper=======";
-echo "<br>";
-print_r($animalFromZookeeper);
-echo "<br>";
-$zookeeper->setAnimalToCell($store,$animalFromCell); // Добавляет в нужную клетку в хранилище
-
-echo "=======CellStoreAfterSet=======";
-echo "<br>";
-print_r($store);
-echo "<br>";
-
-$manager = new Maneger();// Создаёт менеджера
-$manager->GeneratAnimalAndGiveZookeeper($zookeeper); // Выдаёт смотрителю животное из фабрики
