@@ -21,8 +21,10 @@ $humans = [
 ];
 
 $store = new ZooPark($animals);// Клетки
-$store->clientLog($humans[0]);
-$store->clientLog($humans[1]);
+$store->clientEntered($humans[0]);
+$store->clientEntered($humans[1]);
+$store->clientEntered($humans[0]);
+$store->clientLeaveed($humans[0]);
 
 
 

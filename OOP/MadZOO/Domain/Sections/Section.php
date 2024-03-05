@@ -6,20 +6,9 @@ interface SectionInteface{
 
 abstract class Section implements SectionInteface{
     
-    protected Cell $cell; 
-    protected $clients = [];
-    protected Logger $log;
-    public function getCell(ControlAnimal $control):Cell{ //Ищим клетку по енаму     
-        
-        
-
-        foreach ($this->cell as $cell) {
-            if($cell->type == $control) {
-                return $cell;
-            }           
-        }
-        return $this->createCell($control);                
-    }
+    protected  $cells = []; 
+    public $clients = [];
+    protected Logger $log;    
     public  function createCell(ControlAnimal $control):Cell {
         $cell = match ($control) {
             ControlAnimal::Fish => new CellFish(),

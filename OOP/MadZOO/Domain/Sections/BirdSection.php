@@ -33,18 +33,20 @@ public function clientLogOut(Client $client){
 }
 
 public function __construct(Logger $log,$arraybirds){
-    parent::__construct($log); 
-    $this->cell = new Cell(ControlAnimal::Bird);
-    foreach($arraybirds as $animal){
-        
-        if($animal->name == null){
-            $animalName = "\"Без имени\"";
+    parent::__construct($log);    
+    $this->cells[] = new CellBird();
+    $this->addAnimal($log,$arraybirds);
+}
+public function addAnimal(Logger $log,array $arraybirds){
+    foreach($arraybirds as $animal){ 
+        $animalName = ($animal->name == null) ? "\"Без имени\"" : $animal->name;
+        $keyLastCell = array_key_last($this->cells);
+        if($this->cells[$keyLastCell]->addAnimal($animal)){
+            $this->cells[] = new CellBird();
+            $keyLastCell = array_key_last($this->cells);
+            $this->cells[$keyLastCell]->addAnimal($animal);
         }
-        else{
-            $animalName = $animal->name;
-        }
-        $this->cell->addAnimal($animal);
         $log->writeLog(TypeLog::Zoo,"Зоопарк","Животное с именем - ".$animalName. " Зачислено на секции зоопарка"); 
-    }        
+    }  
 }
 }

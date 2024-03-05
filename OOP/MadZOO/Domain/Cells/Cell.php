@@ -40,19 +40,13 @@ class Cell { // The universal cell. Property «type» = kingdom of the animal.
     unset($client->animal);
     }
 
-    public function addAnimal(Creature $animal): void{       
-        if($animal->kingdom != $this->type){
-            throw new Exception("Животные не того типа");            
-        }
-
+    public function addAnimal(Creature $animal):bool{ 
         if(count($this->animals)>=self::MAXANIMALS){
-            throw new Exception("Животные не помещаются в секцию");
+            return false;
         }
-
-        else{
-            
-            $this->animals[] = $animal; 
-            
+        else{            
+            $this->animals[] = $animal;
+            return true;            
         }  
     } 
       
