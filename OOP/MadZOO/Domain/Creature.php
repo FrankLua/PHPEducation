@@ -8,13 +8,17 @@ abstract class Creature{
         $this->name = $name;
         $this->kingdom = $kingdom;     
     }
-
-    public function getType():ControlAnimal{
-        return match($this->kingdom){
-            "Bird"=> ControlAnimal::Bird,
-            "Mammal"=> ControlAnimal::Mammal,
-            "Fish"=>ControlAnimal::Fish,
-        };
+    public function incrementViews(Logger $log): void{
+        $this->views++;
+        if($this->name == null){
+            $animalName = "\" Без имени \"";
+        }
+        else{
+            $animalName = $this->name;
+        }
+        $log->writeLog("Зоопарк","Животное с именем ". $animalName." Получило просмотр. Всего просмотров: ". $this->views); 
     }
+
+    
 
 }

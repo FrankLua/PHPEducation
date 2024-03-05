@@ -1,13 +1,16 @@
 <?php
 class Cell { // The universal cell. Property «type» = kingdom of the animal.
-    public ControlAnimal $type; 
-
-    private static int $max = 2;
-
+    public ControlAnimal $type;
+    const MAXANIMALS = 3;
     public $animals = [];
-    public function getAnimal(?string $name = "Безымянный") : Creature|null { // Получаем случайное животное из клетки
-        foreach($this->animals as $animal){
+
+    public function __construct() {
+    }
+
+    public function getAnimal(?string $name = null) : Creature|null { // Получаем случайное животное из клетки
+        foreach($this->animals as $key=>$animal){
             if($name == $animal->name){
+                unset($this->animals[$key]);
                 return $animal;
             }            
         }    
@@ -18,7 +21,7 @@ class Cell { // The universal cell. Property «type» = kingdom of the animal.
             
         }
 
-        if(count($this->animals)>=$this::$max){
+        if(count($this->animals)>=self::MAXANIMALS){
             echo "===============Клетка заполнена==============" . PHP_EOL;
         }
 
@@ -35,11 +38,13 @@ class CellBird extends Cell{
 }
 class CellMammals extends Cell {
     public function __construct(){
+        
         $this->type = ControlAnimal::Mammal;
     }
 }
 class CellFish extends Cell {
     public function __construct(){
+       
         $this->type = ControlAnimal::Fish;
     }
 }

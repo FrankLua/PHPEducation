@@ -1,16 +1,19 @@
 <?php
-class Human{
-    public string $name;    
+class  Client{
+    public string $name;
+    public ?Creature $animal;
     public Interest $interest;
     function __construct(string $name,Interest $interest){
         $this->name = $name;
+        $this->animal = null; 
         $this->interest = $interest; 
     }
 }
 class Interest{
     public ?string $name;
     public ControlAnimal $kind;
-    function __construct(string $name = null,ControlAnimal $kind){
+    function __construct(ControlAnimal $kind,?string $name = null){
+                
         $this->name = $name;
         $this->kind = $kind;
     }
