@@ -12,17 +12,17 @@ class ZooPark {
 
  
     public function clientLog(Client $client){
-        $this->log->writeLog("Клиент",$client->name . " Зашёл в зоопарк");
+        $this->log->writeLog(TypeLog::Client,"Клиент",$client->name . " Зашёл в зоопарк");
         $this->switcherLog($client);
         $countPeople = $this->getCountPeople();
-        $this->log->writeLog("Зоопарк", "Всего в зоопарке ". $countPeople ." Людей");        
+        $this->log->writeLog(TypeLog::Zoo,"Зоопарк", "Всего в зоопарке ". $countPeople ." Людей");        
     }
     public function clientLogOut(Client $client){
         
         $this->switcherLogOut($client);  
-        $this->log->writeLog("Клиент",$client->name . " Вышел из зоопарка");
+        $this->log->writeLog(TypeLog::Client,"Клиент",$client->name . " Вышел из зоопарка");
         $countPeople = $this->getCountPeople();
-        $this->log->writeLog("Зоопарк", "Всего в зоопарке ". $countPeople ." Людей");       
+        $this->log->writeLog(TypeLog::Zoo,"Зоопарк", "Всего в зоопарке ". $countPeople ." Людей");       
     }
     private function switcherLog(Client $client){
         match ($client->interest->kind)

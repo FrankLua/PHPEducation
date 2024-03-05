@@ -7,11 +7,13 @@ interface SectionInteface{
 abstract class Section implements SectionInteface{
 
     const MAXANIMALS = 3;
-    protected $cell = [];
+    protected Cell $cell; 
     protected $clients = [];
     protected Logger $log;
     public function getCell(ControlAnimal $control):Cell{ //Ищим клетку по енаму     
         
+        
+
         foreach ($this->cell as $cell) {
             if($cell->type == $control) {
                 return $cell;
@@ -31,18 +33,7 @@ abstract class Section implements SectionInteface{
     public function getCountPeople() : int{
         return count($this->clients );
     }
-    public function __construct(Logger $log,Array $animals){
-        foreach($animals as $animal){
-            
-            if($animal->name == null){
-                $animalName = "\"Без имени\"";
-            }
-            else{
-                $animalName = $animal->name;
-            }
-            $log->writeLog("Зоопарк","Животное с именем - ".$animalName. " Зачислено на секции зоопарка"); 
-        }
-        $this->cell = $animals;
+    public function __construct(Logger $log){        
         $this->log = $log;
     }
 
