@@ -1,7 +1,7 @@
 <?php
 class FishSection extends Section{   
     const MAXCLIENT = 5;    
-    const MAXANIMALS = 10;    
+    const MAXANIMALS = 10;
     private string $sectionName = " \"Рыбы\" ";
 
     public function clientLog(Client $client):void{

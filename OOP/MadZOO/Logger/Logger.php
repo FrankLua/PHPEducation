@@ -1,6 +1,6 @@
 <?php
 class Logger {
-    public $clientLoger= [];
+    public $clientLoger = [];
     public $zooLoger = [];
 
 
@@ -8,12 +8,12 @@ class Logger {
         $this->zooLoger[ ] = "Открытие зоопарка" . PHP_EOL . "Время: " . date("Y-m-d H:i:s") . PHP_EOL;
     }
 
-    public function writeLog(TypeLog $typeMessage,string $topic,string $message) {
-        match($typeMessage){
-            TypeLog::Client=>$this->clientLoger[] = "Тема: " . $topic.". Контентент: ".$message.".",
-            TypeLog::Zoo => $this->zooLoger[] = "Тема: " . $topic.". Контентент: ".$message .".",
-        };
+    public function writeLog(TypeLog $typeMessage,string $topic,string $message) {       
         
+        $this->clientLoger[] = match($typeMessage){
+            TypeLog::Client=>"Тема: " . $topic.". Посетитель: ".$message.".",
+            TypeLog::Zoo => "Тема: " . $topic.". Контент: ".$message .".",
+        };
     }    
     public function readAllLog():void {
         foreach($this->zooLoger as $topic => $message) {

@@ -10,6 +10,7 @@ $animals = array_merge($birds,$mammls, $fish);
 
 $humans = [
     new Client("Naumov Sasha",new Interest(ControlAnimal::Mammal,"Monkey Bob")),
+    new Client("Lena",new Interest(ControlAnimal::Mammal,"Monkey Bob")),
     new Client("Tailer Derden",new Interest(ControlAnimal::Fish)),
     new Client("Alisa",new Interest(ControlAnimal::Bird)),
     new Client("Raian Gosling",new Interest(ControlAnimal::Bird)),
@@ -20,14 +21,8 @@ $humans = [
 ];
 
 $store = new ZooPark($animals);// Клетки
-
-
 $store->clientLog($humans[0]);
-$store->clientLog($humans[0]);
-$store->clientLogOut($humans[0]);
-
-
-
+$store->clientLog($humans[1]);
 
 
 

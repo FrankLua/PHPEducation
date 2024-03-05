@@ -5,8 +5,7 @@ interface SectionInteface{
 }
 
 abstract class Section implements SectionInteface{
-
-    const MAXANIMALS = 3;
+    
     protected Cell $cell; 
     protected $clients = [];
     protected Logger $log;

@@ -10,6 +10,9 @@ class  Client{
     }
 }
 class Interest{
+    function __toString(){
+        return $this->name ?? $this->kind->value;
+    }
     public ?string $name;
     public ControlAnimal $kind;
     function __construct(ControlAnimal $kind,?string $name = null){

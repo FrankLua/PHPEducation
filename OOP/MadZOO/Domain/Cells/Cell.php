@@ -9,8 +9,7 @@ class Cell { // The universal cell. Property «type» = kingdom of the animal.
     }
     public function findAnimal(?string $name= null){
         if($name == null){
-            if(count($this->animals) == 0){
-                
+            if(count($this->animals) == 0){                
                 return null;
             }            
             $key = array_rand($this->animals);

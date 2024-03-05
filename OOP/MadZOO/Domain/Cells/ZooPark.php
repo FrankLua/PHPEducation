@@ -3,6 +3,9 @@ class ZooPark {
     private MammalSection $mammalSection;
     private BirdSection $birdsSection;
     private FishSection $fishSection;
+    
+    
+
     private Logger $log;
 
     private function getCountPeople(){
@@ -12,7 +15,8 @@ class ZooPark {
 
  
     public function clientLog(Client $client){
-        $this->log->writeLog(TypeLog::Client,"Клиент",$client->name . " Зашёл в зоопарк");
+
+        $this->log->writeLog(TypeLog::Client,"Клиент",$client->name . " Зашёл в зоопарк". " c интересом - " . $client->interest);
         $this->switcherLog($client);
         $countPeople = $this->getCountPeople();
         $this->log->writeLog(TypeLog::Zoo,"Зоопарк", "Всего в зоопарке ". $countPeople ." Людей");        

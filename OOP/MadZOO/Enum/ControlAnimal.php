@@ -1,6 +1,6 @@
 <?php
-enum ControlAnimal{
-    case Bird;
-    case Mammal;
-    case Fish;
+enum ControlAnimal: string{
+    case Bird = 'Птицы';
+    case Mammal = 'Млекопитающие';
+    case Fish = 'Рыбы';
 }

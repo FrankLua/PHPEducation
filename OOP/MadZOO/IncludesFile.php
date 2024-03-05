@@ -1,0 +1,17 @@
+<?php
+include_once("Domain/Creatures/Creature.php");
+include_once("Domain/Creatures/Bird.php");
+include_once("Domain/Creatures/Fish.php");
+include_once("Domain/Creatures/Mammal.php");
+include_once("Domain/People/People.php");
+include_once("Domain/Cells/Cell.php");
+include_once("Domain/Cells/ZooPark.php");
+include_once("Logger/Logger.php");
+include_once("Domain/Sections/Section.php");
+include_once("Domain/Sections/BirdSection.php");
+include_once("Domain/Sections/FishSection.php");
+include_once("Domain/Sections/MammalSection.php");
+include_once("Domain/Personal/Manager.php");
+include_once("Domain/Personal/ZooKeeper.php");
+include_once("Enum/ControlAnimal.php");
+include_once("Factory/Factory.php");
