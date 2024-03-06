@@ -6,7 +6,10 @@ interface SectionInteface{
 
 abstract class Section implements SectionInteface{
     
-    protected  $cells = []; 
+    protected  $cells = [];    
+    const MAXCLIENT = 10;
+    const MAXANIMAL = 5;
+    
     public $clients = [];
     protected Logger $log;    
     public  function createCell(ControlAnimal $control):Cell {

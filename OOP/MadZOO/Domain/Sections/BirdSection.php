@@ -1,52 +1,64 @@
 <?php
 class BirdSection extends Section{   
-    private string $sectionName = " \"Птицы\" ";      
+    private string $sectionName = " \"Птицы\" ";   
     
-    public function clientLog(Client $client){ 
-        
-        $animal = $this->cell->findAnimal($client->interest->name);          
+    
+    
+    public function clientLog(Client $client):bool{
+        #region FilterClients
+        if(count($this->clients)>= self::MAXCLIENT){  
+            return false;
+        }
+        #endregion
+        $animalName = $client->interest->name;
+        $animal = $this->findAnimal($animalName);         
         if($animal == null){
-            $this->log->writeLog(TypeLog::Client,"Клиент","Клиент с именем ".$client->name." не нашёл то чего искал");  
-            return;
+            return false;
         }                       
         $client->animal = $animal;
+        $this->log->clientGetAnimal($client->name,$animalName);    
         $animal->incrementViews($this->log);
-        $this->clients[] = $client;
-        $this->log->writeLog(TypeLog::Client,"Клиент","Клиент с именем ".$client->name." получил животное".PHP_EOL);        
-        $this->log->writeLog(TypeLog::Zoo,"Зоопарк","Клиентов в секции .$this->sectionName. сейчас " . count( $this->clients) . PHP_EOL);
-        return;             
+        $this->clients[] = $client;        
+            
+        return true;             
 }
 
-public function clientLogOut(Client $client){
-        
-    if($client->animal == null){
-        $this->log->writeLog(TypeLog::Client,"Клиент","Клиент с именем ".$client->name." нету животного, ему нечего отдавать ". PHP_EOL);
-        return;
-    } 
-    $this->cell->clientSetAnimal($client);
+public function clientLogOut(Client $client){        
+    
+    $this->addAnimal([$client->animal]);
+    $animalName = $client->animal->name;
     $key = array_search($client,$this->clients);
     unset($this->clients[$key]);
-    $this->log->writeLog(TypeLog::Client,"Клиент","Клиент с именем ".$client->name." отдал животное".PHP_EOL);
-    $this->log->writeLog(TypeLog::Client,"Клиент","Клиент с именем ".$client->name." Ушёл из секции". $this->sectionName);
-    $this->log->writeLog(TypeLog::Zoo,"Зоопарк","Клиентов в секции .$this->sectionName. сейчас " . $this->clients . PHP_EOL);
+    #region LogSection
+    $this->log->clientSetAnimal($client->name,$animalName);
+    #endregion
     return;       
 }
 
 public function __construct(Logger $log,$arraybirds){
     parent::__construct($log);    
     $this->cells[] = new CellBird();
-    $this->addAnimal($log,$arraybirds);
+    $this->addAnimal($arraybirds);
 }
-public function addAnimal(Logger $log,array $arraybirds){
-    foreach($arraybirds as $animal){ 
-        $animalName = ($animal->name == null) ? "\"Без имени\"" : $animal->name;
+#region CRUD
+public function addAnimal(array $arraybirds){
+    foreach($arraybirds as $animal){   
         $keyLastCell = array_key_last($this->cells);
-        if($this->cells[$keyLastCell]->addAnimal($animal)){
-            $this->cells[] = new CellBird();
-            $keyLastCell = array_key_last($this->cells);
-            $this->cells[$keyLastCell]->addAnimal($animal);
+        $cell = $this->cells[$keyLastCell];
+        if(count($cell->animals)>= self::MAXANIMAL){
+            $keyLastCell = array_push($this->cells,new CellBird()) -1 ;
         }
-        $log->writeLog(TypeLog::Zoo,"Зоопарк","Животное с именем - ".$animalName. " Зачислено на секции зоопарка"); 
+        $this->cells[$keyLastCell]->addAnimal($animal);
     }  
 }
+public function findAnimal(?string $name = null){
+    foreach($this->cells as $cell){
+        $animal = $cell->findAnimal($name);
+        if($animal != null){
+            return $animal;
+        }
+    }
+    return null;
+}
+#endregion
 }
