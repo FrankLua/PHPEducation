@@ -1,31 +1,23 @@
 <?php
-interface SectionInteface{
-    function clientLog(Client $client);
-    function clientLogOut(Client $client);    
-}
 
-abstract class Section implements SectionInteface{
-    
-    protected  $cells = [];    
-    const MAXCLIENT = 10;
-    const MAXANIMAL = 5;
-    
+namespace Zoo\Domain\Sections;
+
+use Zoo\Logger\Logger;
+use Zoo\Domain\Sections\Interfaces\SectionInterface;
+
+abstract class Section implements SectionInterface
+{
+    protected $cells = [];
+    public const MAXCLIENT = 10;
+    public const MAXANIMAL = 5;
     public $clients = [];
-    protected Logger $log;    
-    public  function createCell(ControlAnimal $control):Cell {
-        $cell = match ($control) {
-            ControlAnimal::Fish => new CellFish(),
-            ControlAnimal::Mammal=> new CellMammals() ,
-            ControlAnimal::Bird => new CellBird() ,
-        };
-        $this->cell = $cell;
-        return $cell;
+    protected Logger $log;
+    public function getCountPeople(): int
+    {
+        return count($this -> clients);
     }
-    public function getCountPeople() : int{
-        return count($this->clients );
-    }
-    public function __construct(Logger $log){        
+    public function __construct(Logger $log)
+    {
         $this->log = $log;
     }
-
 }

@@ -1,0 +1,19 @@
+{
+    "name": "zoo/domain",
+    "description": "1234",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Zoo\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Bogdan Krasnov",
+            "email": "sosiska6742@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

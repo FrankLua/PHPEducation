@@ -1,14 +1,17 @@
 <?php
+
+namespace Zoo\Domain\Sections;
+
+use Zoo\Domain\Person\Client;
+use Zoo\Logger\Logger;
+use Zoo\Domain\Cells\CellMammal;
+
 class MammalSection extends Section
 {
-    private string $sectionName = " \"Млекопитающие\" ";
-
-
-
     public function clientLog(Client $client): bool
     {
         #region FilterClients
-        if (count($this->clients) >= self::MAXCLIENT) {
+        if (count($this->clients) >= self:: MAXCLIENT) {
             return false;
         }
         #endregion
@@ -21,7 +24,6 @@ class MammalSection extends Section
         $this->log->clientGetAnimal($client->name, $animalName);
         $animal->incrementViews($this->log);
         $this->clients[] = $client;
-        
         return true;
     }
 
@@ -40,7 +42,7 @@ class MammalSection extends Section
     public function __construct(Logger $log, $arraybirds)
     {
         parent::__construct($log);
-        $this->cells[] = new CellMammals();
+        $this->cells[] = new CellMammal();
         $this->addAnimal($arraybirds);
     }
     #region CRUD
@@ -50,7 +52,7 @@ class MammalSection extends Section
             $keyLastCell = array_key_last($this->cells);
             $cell = $this->cells[$keyLastCell];
             if (count($cell->animals) >= self::MAXANIMAL) {
-                $keyLastCell = array_push($this->cells, new CellMammals()) - 1;
+                $keyLastCell = array_push($this->cells, new CellMammal()) - 1;
             }
             $this->cells[$keyLastCell]->addAnimal($animal);
         }

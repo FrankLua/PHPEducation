@@ -1,5 +1,9 @@
 <?php
-enum ControlAnimal: string{
+
+namespace Zoo\Enum;
+
+enum ControlAnimal: string
+{
     case Bird = 'Птицы';
     case Mammal = 'Млекопитающие';
     case Fish = 'Рыбы';
