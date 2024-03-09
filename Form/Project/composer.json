@@ -1,0 +1,20 @@
+{
+    "name": "form/project",
+    "description": "1234",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Project\\": "Back\\"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bogdan Krasnov",
+            "email": "sosiska6742@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

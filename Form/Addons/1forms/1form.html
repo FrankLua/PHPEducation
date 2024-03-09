@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Тег <form> устанавливает форму на веб-странице.
+        Форма предназначена для обмена данными между пользователем и сервером.
+        Область применения форм не ограничена отправкой данных на сервер,
+        C помощью скриптов можно получить доступ к любому элементу формы.
+        Документ может содержать любое количество форм, 
+        но одновременно на сервер может быть отправлена только одна форма.
+        По этой причине данные форм должны быть независимы друг от друга.
+         
+        Устанавливает кодировку, в которой сервер может принимать и обрабатывать данные. - accept-charset
+        
+        Адрес программы или документа, который обрабатывает данные формы.- action
+
+        Включает автозаполнение полей формы. - autocomplete
+
+        Способ кодирования данных формы. - enctype
+
+        Метод протокола HTTP. - method
+
+        Имя формы. -   name
+
+        Отменяет встроенную проверку данных формы на корректность ввода. - novalidate
+
+        Имя окна или фрейма, куда обработчик будет загружать возвращаемый результат. - target
+    -->   
+    <form action="handler.php" name="form1">
+        
+
+        <input type="text" placeholder="Ваше имя" required name="first-name"><label for="first-name">Это поле должно быть заполнено </label><br><br>
+        
+        <input id="second-name" type="text" placeholder="Ваша фамилия"  required  disabled><br><br>
+        
+        <label for="second-name">Выключен </label>
+        <h3>Страна проживания</h3>
+        
+        <input type="radio" name = "country" checked>
+        <label for="country1">Россия</label>
+        <input type="radio" name = "country">
+        <label for="country2">Украина</label>
+        <input type="radio" name = "country">
+        <label for="country3">Казахстан</label>
+
+        <!--types-->
+        
+        <input type="checkbox"><br><br>
+        <input type="radio"><br><br>
+        <input  type="submit"><br><br>
+        <input type="button"><br><br>
+        <input type="reset"><br><br>
+        <input type="file"><br><br>
+        <input type="password"><br><br>
+        <input id="name" type="email"> <label for="name">Емайл</label> <br><br>
+        <input type="number"><br><br>
+        <input type="date"><br><br>
+        <input type="color"><br><br>
+        <input type="range"><br><br>
+        <input type="hidden"><br><br>
+
+        <!-- textarea-->
+        <textarea type="textarea rows" name = "" rows="50" cols="50" maxlength="5" required placeholder="textarea"></textarea><br><br>
+
+        <!-- button-->
+        <button type="menu">button</button><br><br>
+
+        <!-- select - option -->
+
+        <select name="" id="" size="3" ><br><br>
+            <option value="1" disabled>Выбор 1 </option>
+            <option value="2" selected>Выбор 2 </option>
+            <option value="3" label="choice number 3">Выбор 3 </option>
+            <option value="4">Выбор 4 </option>
+            <option value="5">Выбор 5 </option>
+        </select>
+
+        <!-- fieldset-->
+
+        <fieldset disabled>
+            <legend alingn = "center" title="my title">Наша форма</legend>
+            <input type="text"><label for="">input 1</label>
+            <legend>Наша вторая форма</legend>
+            <input type="text"><label for="">input 1</label>
+            <input type="text"><label for="">input 2</label>     
+        </fieldset><br><br>
+            
+        <p><input type="submit"></p>        
+    </form>
+    <input type="text" form="form1" name="aborden-input" required>
+    <label for="aborden-input">С помощью атрибута form можно определить к какой форме будет относиться инпут</label>
+      
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="send-mail.php" method="POST">
+        <select name = "subject">
+            <option disabled selected> Тема письма</option>
+            <option value="1">PHP</option>
+            <option value="2">C#</option>
+            <option value="3">Kotlin</option>
+            <option value="4">Rust</option>
+        </select>
+        <input type="email" name = "email" placeholder="email" maxlength="50" required minlength="4">
+        <label for = "email">Емайл</label><br>
+        <textarea rows="25" cols="25" required placeholder="Введите сообщение" name = "message"></textarea>
+        <button type="submit"> send </button>
+    </form>
+</body>
+</html>
