@@ -6,6 +6,7 @@ use Project\Domain\Models\BaseModel\BaseModel;
 
 class Order extends BaseModel
 {
+    public int $idOrder;
     public string $lastName;
 
     public string $firstName;

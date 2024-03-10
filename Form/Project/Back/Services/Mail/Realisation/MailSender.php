@@ -25,7 +25,7 @@ class MailSender extends MailConnect implements MailInterface
         $mail->setFrom(parent::SMTP_USER);
         $mail->addAddress($to);
 
-        $mail->Subject = "successful recording for the concert";
+        $mail->Subject = "Ваша регистрация на концерт прошла успешно";
         $html = static::getStandartHTML() . "<div>" . $message . "</div></body>";
         $mail->msgHTML($html);
         $mail ->CharSet = "UTF-8";

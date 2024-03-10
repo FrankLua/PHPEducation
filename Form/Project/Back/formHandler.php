@@ -6,6 +6,9 @@ use Project\Domain\Models\Order\Order;
 use Project\Services\DBO\Realization\OrderService;
 use Project\Services\Mail\Realisation\MailSender;
 
+$mailService = new MailSender();
+$db = new OrderService();
+
 if (empty($_POST['first-name']) | empty($_POST['last-name']) | empty($_POST['email']) | empty($_POST['group']) | empty($_POST['year-old'])) {
     exit("<span style = 'background:red'> Не все поля заполнены </span>");
 }
@@ -21,11 +24,11 @@ $group = match (htmlspecialchars($_POST["group"])) {
 };
 
 $order = new Order($lastName, $firstName, $email, $group, $yearOld);
+$id = $db->setOrder($order);
 
-$db = new OrderService();
-if ($db->setOrder($order)) {
-    header("sucsesful");
+if ($mailService->send("Ваше приглашение на концерт группы: $group", $email) && $id != null) {
+
+    header("location: result.html?id=$id", true, 200);
+} else {
+    header("bad");
 }
-
-$mailService = new MailSender();
-$mailService->send("$group wait for you", $email);

@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="Front/Css/index.css">
+    <script src="Front/Js/Index.js" defer></script>
+    <title>Form</title>
 </head>
+
 <body>
-    <form action="Back/formHandler.php" method="POST">
-        <h2>Запоните форму для записи на бесплатный концерт</h2>
-        <input type="text" name = "first-name" required>
-        <label for="first-name">Ваше имя</label>
-        <input type="text" name = "last-name" required>
-        <label for="last-name">Ваша фамилия</label>
-        <input type="number" name = "year-old" max="115" min = "3" required>
-        <label for="year-old">Ваш возраст</label>
-        <input type="email" name = "email" required>
-        <label for="email">Ваш Емайл</label>
-        <select name="group" id="" required>
-            <option value="" selected disabled>Выберите музыкальную группу</option>
-            <option value="1">Radio-Head</option>
-            <option value="2">Земфира</option>
-            <option value="3">Ghinzu</option>
-        </select>
-        <label for="group">Выберите группу</label>
-        <button type="submit">Записаться</button>
-    </form>    
+    <main>
+        <div class="back-ground" id="ground">
+            <div class="blur">
+
+            </div>
+        </div>
+        <form action="Back/formHandler.php" method="POST">
+            <div class='bold-line'></div>
+            <div class='container'>
+                <div class='window'>
+                    <div class='overlay'></div>
+                    <div class='content'>
+                        <div class='welcome'>Музыкальные концерты</div><br>
+                        <div class='subtitle'>Запоните VIP форму для записи на концерт.</div>
+                        <div class='input-fields'>
+                            <input type="text" name="first-name" placeholder='Ваше имя' required
+                                class='input-line full-width'>
+                            <input type="text" name="last-name" placeholder="Ваша фамилия" required
+                                class='input-line full-width'>
+                            <input type="number" name="year-old" max="115" min="3" placeholder="Ваш возраст" required
+                                class='input-line full-width'>
+                            <input type="email" name="email" required placeholder="Ваш Емайл"
+                                class='input-line full-width'>
+                            <select name="group" id="selector" required class='input-line full-width'>
+                                <option value="" selected disabled>Выберите музыкальную группу</option>
+                                <option value="1">Radio Head</option>
+                                <option value="2">Земфира</option>
+                                <option value="3">Ghinzu</option>
+                            </select>
+                        </div>
+                        <div><button class='ghost-round full-width'>Отправить.</button></div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </main>
 </body>
+
 </html>
