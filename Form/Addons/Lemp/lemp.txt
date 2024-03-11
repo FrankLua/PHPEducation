@@ -24,5 +24,6 @@ http - обработка http запросов
 server - найстройка сайта
 listen - слушает порт
 server_name - прописывается хост
+return - переслать клиента
 
 ets/nginx/nginx.conf - уп
