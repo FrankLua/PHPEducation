@@ -1,0 +1,21 @@
+{
+    "name": "sosis/project",
+    "description": "1234",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "application"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bogdan Krasnov",
+            "email": "sosiska6742@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    }
+}
