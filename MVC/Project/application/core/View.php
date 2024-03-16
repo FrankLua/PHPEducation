@@ -26,7 +26,6 @@ class View
 
 	public function redirect($url) {
 		header('location: /'.$url);
-		exit;
 	}
 
 	public function message($status, $message) {

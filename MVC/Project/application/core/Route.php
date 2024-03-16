@@ -31,6 +31,7 @@ class Route
     }
     public function match() {
         $url = trim($_SERVER['REQUEST_URI'], '/');
+        $url = explode('?',$url)[0];
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 $this->params = $params;

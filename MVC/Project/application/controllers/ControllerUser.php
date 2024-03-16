@@ -4,6 +4,8 @@ namespace MVC\controllers;
 
 use Exception;
 use MVC\core\Controller;
+use MVC\models\classes\User;
+use MVC\models\ModelUser;
 
 /**
  * PHP version 8.3.3
@@ -16,6 +18,11 @@ use MVC\core\Controller;
  */
 class ControllerUser extends Controller
 {
+    public function __construct(User $user)
+    {
+        parent::__construct($user);
+        $this->model = new ModelUser();
+    }
     public function actionIndex()
     {
         $this->view->generate('mainView.php', 'layOut.php');
@@ -25,18 +32,27 @@ class ControllerUser extends Controller
     {
         return $this->view->generate('Login.html', 'layOut.php'); 
     }
+    private function auth(User $user)
+    {
+        $_SESSION['authorize'] = true;
+        $_SESSION['email'] = $user->username;
+        $_SESSION['role'] = $user->role;
+    }
     public function actionLoginPost()
     {
         if (isset($_POST)) {
             $email = $_POST['email'];
             $pass = $_POST['pass'];
             try{
-                $this->model->getData($email, $pass);
+               $user = $this->model->getDataByEmail($email);
+               if($user->password != $pass){
+                $this->view->errorCode(403);
+               }
             } catch (Exception $e) {
                 $this->view->errorCode(403);
             }
-            setcookie('login', $email ,  time() + 1800,'/');                    
-            $this->view->redirect("application/views/mainView.php");                  
+            $this->auth($user);            
+            $this->actionIndex();                 
         }
         else {
             $this->view->errorCode(400);
@@ -51,13 +67,16 @@ class ControllerUser extends Controller
         if (isset($_POST)) {
             $email = $_POST['email'];
             $pass = $_POST['pass'];
+            
             try{
-                $this->model->setData($email, $pass);
+                $user = $this->model->setData($email, $pass);
             } catch (Exception $e) {
                 $this->view->errorCode(400);
-            } 
-            setcookie('login', $email ,  time() + 1800,'/');                   
-            $this->view->redirect("application/views/mainView.php");            
+            }
+            if($user != null) {
+                $this->auth($user);
+            }            
+            $this->actionIndex();            
         }
         else {
             $this->view->errorCode(400);
@@ -65,7 +84,7 @@ class ControllerUser extends Controller
     }
     public function actionLogout()
     {
-        unset($_SESSION['login']);
+        unset($_SESSION['authorize'], $_SESSION['email'],$_SESSION['role']);
         $this->view->redirect('application/views/mainView.php');
     }
 }

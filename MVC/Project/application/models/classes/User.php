@@ -4,10 +4,12 @@ namespace MVC\models\classes;
 
 class User
 {
-    public $id;
+    public int $id;
 
-    public $username;
+    public string $username;
 
-    public $password;
+    public string $password;
+
+    public string $role;
     
 }

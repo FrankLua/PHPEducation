@@ -3,6 +3,8 @@
 namespace MVC\controllers;
 
 use MVC\core\Controller;
+use MVC\models\ModelNews;
+use MVC\models\viewsModels\NewsView;
 
 /**
  * PHP version 8.3.3
@@ -19,14 +21,21 @@ class ControllerNews extends Controller
     public function __construct($router)
     {
         parent::__construct($router);
+        $this->model = new ModelNews();
     }
     public function actionIndex()
     {
-        $data = $this->model->getData();
+        $actualPage = htmlspecialchars($_GET['id']);
+        if($actualPage == null){
+            $actualPage = 0;
+        }
+        $countRows = $this->model->getCountRows();
+        $news = $this->model->getData($actualPage); 
+        $data = new NewsView($countRows, $news, $actualPage);       
         $this->view->generate('NewsView.php', 'layOut.php',$data);
     }
     public function actionCreate()
-    {
+    {        
         $this->view->generate('NewsCreate.html', 'layOut.php');
     }
     public function actionCreatePost()
@@ -34,8 +43,9 @@ class ControllerNews extends Controller
         $title = $_POST["title"];
         $content = $_POST["content"];
         $author = "Anonimous";
-        $this->model->setData($title,$content,$author);
-        $this->actionIndex();        
+        $date = date('Y-m-d H:i:s');
+        $this->model->setData($title,$content,$author,$date);
+        $this->actionIndex(); 
     }
 
 }

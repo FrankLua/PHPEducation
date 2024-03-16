@@ -15,6 +15,9 @@ use MVC\core\Controller;
  */
 class ControllerMain extends Controller
 {
+    public function __construct($router){
+        parent::__construct($router);       
+    }
     public function actionIndex()
     {
         $this->view->generate('mainView.php', 'layOut.php');

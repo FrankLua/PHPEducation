@@ -8,7 +8,7 @@ return [
 		'LoginPost'
 	],
 	'authorize' => [
-		'logOut',
+		'LogOut',
 	],
 	'guest' => [
 		//

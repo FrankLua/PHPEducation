@@ -50,11 +50,26 @@ class DB
      *
      * @param  mixed $sql
      * @param  mixed $params
-     * @return void
+     * @return mixed
      */
-    public function insert(string $sql, $params = [])
+    public function insert(string $sql, $params = []): int
     {
-        $this->query($sql, $params);             
+        $this->query($sql, $params);
+        return $this->_db->lastInsertId();          
+    }
+    public function getCountRows(string $tableName): int
+    {
+        $sql = "SELECT COUNT(*) FROM $tableName";
+        $result = $this->_db
+        ->query($sql)
+        ->fetchColumn();
+        return $result;
+    }
+
+    public function selectMany(string $sql, $params = [])
+    {
+        $result = $this->query($sql, $params);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function selectOne(string $sql, $params = []): mixed

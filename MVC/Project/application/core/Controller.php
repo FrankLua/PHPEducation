@@ -24,7 +24,6 @@ class Controller
 			View::errorCode(403);
 		}
 		$this->view = new View($route);
-		$this->model = $this->loadModel($route['controller']);
 	}
 
 	public function loadModel($name) {
@@ -39,14 +38,12 @@ class Controller
 		if ($this->isAcl('all')) {
 			return true;
 		}
-		elseif (isset($_SESSION['authorize']['id']) and $this->isAcl('authorize')) {
-			return true;
-		}
-		elseif (!isset($_SESSION['authorize']['id']) and $this->isAcl('guest')) {
-			return true;
-		}
-		elseif (isset($_SESSION['admin']) and $this->isAcl('admin')) {
-			return true;
+		if(isset($_SESSION['authorize'])) {
+			if($this->isAcl('authorize')) {
+				return true;
+			} elseif ($_SESSION['role'] == 'admin' && $this->isAcl('admin')) {
+				return true;
+			}			
 		}
 		return false;
 	}
