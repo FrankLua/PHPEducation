@@ -4,34 +4,54 @@ namespace MVC\core;
 
 /**
  * PHP version 8.3.3
- * Disctription: Call methods in controller
+ * Disctription: Responsible for parse url path
+ * and redirect to controller
 
  * @author   FrankLua <dante_aligieri@rambler.ru>
  * @category Routes;
- * @package  MVC\application\core;
+ * @package  MVC\core;
  * Route
  */
 class Route
-{ 
+{
     protected $routes = [];
 
     protected $params = [];
 
-    // получаем хранилище
-    function __construct() {
-        $arr = require 'Paths.php';
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $arr = include 'Paths.php';
         foreach ($arr as $key => $val) {
             $this->add($key, $val);
         }
     }
-    
-    public function add($route, $params) {
-        $route = '#^'.$route.'$#';
+
+    /**
+     * add Create regular expression from paths
+     *
+     * @param  mixed $route
+     * @param  mixed $params
+     * @return void
+     */
+    public function add($route, $params): void
+    {
+        $route = '#^' . $route . '$#';
         $this->routes[$route] = $params;
     }
-    public function match() {
+    /**
+     * match Check is these path from url
+     *
+     * @return bool
+     */
+    public function match(): bool
+    {
         $url = trim($_SERVER['REQUEST_URI'], '/');
-        $url = explode('?',$url)[0];
+        $url = explode('?', $url)[0];
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 $this->params = $params;
@@ -40,14 +60,21 @@ class Route
         }
         return false;
     }
-    public function run(){
+    /**
+     * Launches application router
+     *
+     *
+     * @return void
+     */
+    public function run()
+    {
         if ($this->match()) {
-            $controllerName = "MVC\controllers\\" .'Controller' . ucfirst($this->params['controller']);
-            $path = 'application\controllers\\'.'Controller' . ucfirst($this->params['controller'] . '.php');
+            $controllerName = "MVC\controllers\\" . 'Controller' . ucfirst($this->params['controller']);
+            $path = 'application\controllers\\' . 'Controller' . ucfirst($this->params['controller'] . '.php');
             if (file_exists($path)) {
-                $action = 'action'. ucfirst($this->params['action']);
+                $action = 'action' . ucfirst($this->params['action']);
                 $controller = new $controllerName($this->params);
-                if (method_exists($controller, $action)) {                    
+                if (method_exists($controller, $action)) {
                     $controller->$action();
                 } else {
                     View::errorCode(404);
@@ -58,79 +85,5 @@ class Route
         } else {
             View::errorCode(404);
         }
-    }
-
-
-    /**
-     * start
-     *
-     * @return void
-     */
-    public static function start(): void
-    {
-        // контроллер и действие по умолчанию
-        $controller_name = 'Main';
-        $action_name = 'Index';
-
-        $routes = explode('/', $_SERVER['REQUEST_URI']);
-
-        // получаем имя контроллера
-        if (!empty($routes[1])) {
-            $controller_name = $routes[1];
-        }
-
-        // получаем имя экшена
-        if (!empty($routes[2])) {
-            $action_name = $routes[2];
-        }
-
-        // добавляем префиксы
-        $model_name = 'Model' . $controller_name;
-        $controller_name = 'Controller' . $controller_name;
-        $action_name = 'action' . $action_name;
-
-        // подцепляем файл с классом модели (файла модели может и не быть)
-
-        $model_file = $model_name . '.php';
-        $model_path = "application/models/" . $model_file;
-        if (file_exists($model_path)) {
-        }
-
-        // подцепляем файл с классом контроллера
-        $controller_file = $controller_name . '.php';
-        $controller_path = "application/controllers/" . $controller_file;
-        if (file_exists($controller_path)) {
-        } else {
-            /*
-            правильно было бы кинуть здесь исключение,
-            но для упрощения сразу сделаем редирект на страницу 404
-            */
-            Route::errorPage404();
-        }
-        // создаем контроллер
-        $controller_name = "MVC\controllers\\" . $controller_name;
-        $controller = new  $controller_name();
-        $action = $action_name;
-
-        if (method_exists($controller, $action)) {
-            // вызываем действие контроллера
-            $controller->$action();
-        } else {
-            // здесь также разумнее было бы кинуть исключение
-            Route::errorPage404();
-        }
-    }
-    /**
-     * errorPage404
-     *
-     * @return void
-     */
-    public static function errorPage404()
-    {
-        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-        header('Location:' . $host . 'application/views/404View.php');
-        header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        die('<h1>Not found</h1>');
     }
 }

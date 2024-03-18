@@ -4,8 +4,8 @@ namespace MVC\core;
 
 /**
  * PHP version 8.3.3
- * Disctription: This base class need to for rendering internet
- * page
+ * Disctription: This base class responsible for view page and
+ * Redirect
 
  * @author   FrankLua <dante_aligieri@rambler.ru>
  * @category Views;
@@ -14,28 +14,42 @@ namespace MVC\core;
  */
 class View
 {
-    //public $template_view; // здесь можно указать общий вид по умолчанию.
-	public $path;
-	public $route;
-	public $layout = 'default';
+    public $path;
+    public $route;
+    public $layout = 'default';
 
-	public function __construct($route) {
-		$this->route = $route;
-		$this->path = $route['controller'].'/'.$route['action'];
-	}
+    /**
+     * __construct
+     *
+     * @param  mixed $route
+     * @return void
+     */
+    public function __construct($route)
+    {
+        $this->route = $route;
+        $this->path = $route['controller'] . '/' . $route['action'];
+    }
 
-	public function redirect($url) {
-		header('location: /'.$url);
-	}
+    /**
+     * redirect - redurect to page.
+     *
+     * @param  mixed $url
+     * @return void
+     */
+    public function redirect($url): void
+    {
+        header('location: /' . $url);
+    }
 
-	public function message($status, $message) {
-		exit(json_encode(['status' => $status, 'message' => $message]));
-	}
-
-	public function location($url) {
-		exit(json_encode(['url' => $url]));
-	}
-    public function generate($contentView, $layOut, $data = null)
+    /**
+     * generate Default View page by src path
+     *
+     * @param  mixed $contentView
+     * @param  mixed $layOut
+     * @param  mixed $data
+     * @return void
+     */
+    public function generate($contentView, $layOut, $data = null): void
     {
         /*
         if(is_array($data)) {
@@ -46,12 +60,19 @@ class View
 
         include 'application/views/' .  $layOut;
     }
-    public static function errorCode($code) {
-		http_response_code($code);
-		$path = 'application/views/errors/'.$code.'.php';
-		if (file_exists($path)) {
-			require $path;
-		}
-		exit;
-	}
+    /**
+     * errorCode generate page error
+     *
+     * @param  mixed $code
+     * @return void
+     */
+    public static function errorCode($code): void
+    {
+        http_response_code($code);
+        $path = 'application/views/errors/' . $code . '.php';
+        if (file_exists($path)) {
+            include $path;
+        }
+        exit;
+    }
 }

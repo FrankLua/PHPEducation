@@ -1,0 +1,12 @@
+.main-content {
+    text-align: center;
+    justify-content: space-between;
+
+    >p {
+        margin-top: 50px;
+        font-size: x-large;
+        margin-bottom: 250px;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}

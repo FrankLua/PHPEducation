@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+}
+
+.wrapper {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.nav-info {
+    margin-left: 10%;
+}
+
+footer {
+    background-color: rgb(19, 19, 19);
+    text-align: center;
+    color: white;
+}
+
+.slider {
+    >img {
+        width: 100%;
+    }
+}

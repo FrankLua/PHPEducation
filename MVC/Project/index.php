@@ -18,6 +18,15 @@ $router = new Route;
 try{
     $router->run();
 } catch(Exception $e){
-    View::errorCode(500);
+    switch($e->getCode()){
+        case 404:
+        header('location: http://localhost/application/views/errors/404.php', response_code: 301);    
+        exit;
+        case 403:
+            header('location: http://localhost/application/views/errors/403.php', response_code: 301);
+            exit;
+            case 400:
+                header('location: http://localhost/application/views/errors/400.php', response_code: 301);
+                exit;};
+    Header('location: http://localhost/application/views/errors/500.php', response_code: 301);
 }
-

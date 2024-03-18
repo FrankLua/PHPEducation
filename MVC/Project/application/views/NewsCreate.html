@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div class='slider'>
+    <img src="/application/views/images/create/Transcription.jpg" alt="">
+</div>
+<div class="login-form">
     <form action="/News/CreatePost" method="post">
-        <input type="text" name = "title" placeholder="Заглавие новости">
-        <textarea name= "content" id="" cols="30" rows="15" placeholder="Контент"></textarea>
-        <button type="submit"> Send </button>
-    </form>    
-</body>
-</html>
+        <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="title">
+        </div>
+        <div class="form-group">
+            <textarea name="content" id="" cols="30" rows="15" class="form-control" placeholder="Content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary"> Create news </button>
+    </form>
+</div>

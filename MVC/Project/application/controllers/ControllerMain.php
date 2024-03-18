@@ -6,19 +6,33 @@ use MVC\core\Controller;
 
 /**
  * PHP version 8.3.3
- * Disctription: This main controller
+ * Disctription: This main controller responsible for
+ * main action on site
 
  * @author   FrankLua <dante_aligieri@rambler.ru>
- * @category Route;
- * @package  MVC\application\core;
- * Route
+ * @category Controllers;
+ * @package  MVC\application\controllers;
  */
+
 class ControllerMain extends Controller
 {
-    public function __construct($router){
-        parent::__construct($router);       
+    /**
+     * __construct
+     *
+     * @param  mixed $router
+     * @return void
+     */
+    public function __construct($router)
+    {
+        parent::__construct($router);
     }
-    public function actionIndex()
+    /**
+     * actionIndex - This main action page site
+     * this collected all information about site.
+     *
+     * @return void
+     */
+    public function actionIndex(): void
     {
         $this->view->generate('mainView.php', 'layOut.php');
     }

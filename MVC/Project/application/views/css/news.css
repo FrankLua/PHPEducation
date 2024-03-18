@@ -1,0 +1,15 @@
+.news-dashbord-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-dashbord-header {
+    text-align: center;
+}
+
+.news-dashbord {
+    padding-left: 25%;
+    padding-right: 25%;
+    text-align: center;
+    margin-top: 10px;
+}
