@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"223baa6e0d1f6190","x":2109,"y":138,"width":371,"height":262,"type":"text","text":"## Service Собирает информацию с нескольких моделей и  производит Бизнес логику"},
+		{"id":"40d4eb5b105a8e05","x":2962,"y":160,"width":250,"height":240,"type":"text","text":"## Model Собирает информацию и производит Бизнес логику (имеет непосредственную связь с БД)"},
+		{"id":"0df4118406a7abb9","x":3383,"y":252,"width":250,"height":60,"type":"text","text":"## DataBase"},
+		{"id":"6459fd75591617c8","type":"text","text":"## Model Собирает информацию (имеет непосредственную связь с БД)","x":2170,"y":-600,"width":250,"height":240},
+		{"id":"780690196ce60340","type":"text","text":"## DataBase","x":2591,"y":-508,"width":250,"height":60},
+		{"id":"11cfa61c6e0e910d","type":"text","text":"## Model Собирает информацию и производит Бизнес логику (имеет непосредственную связь с БД)","x":2962,"y":520,"width":250,"height":333},
+		{"id":"7a71698c955804e3","type":"text","text":"## DataBase","x":3383,"y":648,"width":250,"height":83},
+		{"id":"6b7a89da432e7548","type":"text","text":"## Model Собирает информацию и производит Бизнес логику (имеет непосредственную связь с БД)","x":2962,"y":-328,"width":250,"height":271},
+		{"id":"46a42b34f5f3c981","type":"text","text":"## DataBase","x":3420,"y":-222,"width":250,"height":60},
+		{"id":"cfd17cd4c07e9e26","type":"text","text":"## Controller\n1) Обрабатывает запрашиваемые данные (валидирует)\n2) Дергает нужные сервисы или модели\n3) Направляет нужные View","x":920,"y":-192,"width":380,"height":192},
+		{"id":"89733e0da4d160e4","x":120,"y":-206,"width":303,"height":220,"type":"text","text":"## Router Парсит url и направляет в нужный контроллер\n"},
+		{"id":"19f574c5dec5bfec","x":-580,"y":-148,"width":213,"height":105,"type":"text","text":"# Request"},
+		{"id":"58e4256d97e63ff3","x":-1570,"y":253,"width":230,"height":327,"type":"text","text":"# Client"},
+		{"id":"76cbfd9e3943ffe6","x":-220,"y":675,"width":380,"height":405,"type":"text","text":"# View Рисует страницу с полученными данными"}
+	],
+	"edges":[
+		{"id":"7b2bf77056fe76f4","fromNode":"19f574c5dec5bfec","fromSide":"right","toNode":"89733e0da4d160e4","toSide":"left"},
+		{"id":"d9fe6c62552f4ca1","fromNode":"89733e0da4d160e4","fromSide":"right","toNode":"cfd17cd4c07e9e26","toSide":"left"},
+		{"id":"c16533f80554bad8","fromNode":"cfd17cd4c07e9e26","fromSide":"right","toNode":"223baa6e0d1f6190","toSide":"left"},
+		{"id":"ed72929256cecbc6","fromNode":"223baa6e0d1f6190","fromSide":"right","toNode":"40d4eb5b105a8e05","toSide":"left"},
+		{"id":"39f60f3b4cb0fc5e","fromNode":"40d4eb5b105a8e05","fromSide":"right","toNode":"0df4118406a7abb9","toSide":"left"},
+		{"id":"cc3750602225277d","fromNode":"6459fd75591617c8","fromSide":"right","toNode":"780690196ce60340","toSide":"left"},
+		{"id":"f78a49c4700281d0","fromNode":"cfd17cd4c07e9e26","fromSide":"right","toNode":"6459fd75591617c8","toSide":"left"},
+		{"id":"11c2f1ba8ea9b7a2","fromNode":"6b7a89da432e7548","fromSide":"right","toNode":"46a42b34f5f3c981","toSide":"left"},
+		{"id":"9881da50c79b22ab","fromNode":"11cfa61c6e0e910d","fromSide":"right","toNode":"7a71698c955804e3","toSide":"left"},
+		{"id":"69c672227b5b08db","fromNode":"6b7a89da432e7548","fromSide":"left","toNode":"223baa6e0d1f6190","toSide":"right"},
+		{"id":"b6969785e17d93a3","fromNode":"11cfa61c6e0e910d","fromSide":"left","toNode":"223baa6e0d1f6190","toSide":"right"},
+		{"id":"612408dcc0cb21c2","fromNode":"58e4256d97e63ff3","fromSide":"right","toNode":"19f574c5dec5bfec","toSide":"left"},
+		{"id":"b87380458d48ae75","fromNode":"cfd17cd4c07e9e26","fromSide":"left","toNode":"76cbfd9e3943ffe6","toSide":"right"},
+		{"id":"2687af4493a6ad45","fromNode":"76cbfd9e3943ffe6","fromSide":"left","toNode":"58e4256d97e63ff3","toSide":"right"}
+	]
+}

@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS sqlInjection;
+use sqlInjection;
+create table IF NOT EXISTS example 
+(
+id int auto_increment primary key,
+name varchar(25),
+password varchar(25) default('qwerty')
+);
+insert into example (name) values ('bruh');
+select * from example

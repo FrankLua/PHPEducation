@@ -46,6 +46,7 @@
 
     INSERT
     INSERT – запрос, который позволяет ПЕРВОНАЧАЛЬНО вставить запись в БД. То есть создаёт НОВУЮ запись (строчку) в БД.
+    insert  into posts ( title, content, owner) values ('Упал самолёт','Адекватный текст','debik')
     INSERT INTO users (name, age) VALUES ('Сергей', '25');
 
 
