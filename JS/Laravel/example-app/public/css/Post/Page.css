@@ -1,0 +1,46 @@
+.wrapper {
+    padding-left: 20%;
+    padding-right: 20%;
+    min-height: 100vh;
+
+    text-align: center;
+    background: url("../../images/dd2ba894d335e61b7bff66f41724c0a0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.big-one-post {
+    min-height: 100vh;
+    border-radius: 25px;
+    position: relative;
+
+    >div>form {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+.big-one-post:after {
+    content: '';
+    width: 100%;
+    min-height: 100%;
+    background: rgb(17, 17, 17);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+}
+
+.post-child {
+    position: relative;
+    z-index: 1;
+}
+
+.big-one-post {
+    color: white;
+
+}
+
+.text-big-post {
+    height: 800px;
+}

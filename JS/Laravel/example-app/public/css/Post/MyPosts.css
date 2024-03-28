@@ -1,0 +1,35 @@
+.post-back {
+    padding-left: 10%;
+    padding-right: 10%;
+    background: url("../../images/52e156ee6d2702919bca69d881e768a5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.post-quick-form {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+
+}
+
+.post-list {
+    border-radius: 25px;
+    position: relative;
+}
+
+.post-list:after {
+    content: '';
+    width: 100%;
+    min-height: 100%;
+    background: rgb(17, 17, 17);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+}
+
+.post-child {
+    position: relative;
+    z-index: 1;
+}
