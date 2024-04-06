@@ -18,4 +18,9 @@ class PostTag extends Model
     use HasFactory;
 
     protected $table = "post_tags";
+    protected $fillable = [
+        'post_id',
+        'user_tag'
+    ];
+    public $timestamps = false;
 }

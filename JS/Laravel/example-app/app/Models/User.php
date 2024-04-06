@@ -2,25 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * PHP version 8.3.3
- * Disctription: Model for auth users
-
- * @author   FrankLua <dante_aligieri@rambler.ru>
- * @category Model;
- * @package  App\Models;
- */
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory;
     use Notifiable;
-
-    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -35,25 +23,33 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be cast.
      *
-     * @var array<int, string>
+     * @var array<string, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
+    // Rest omitted for brevity
 
     /**
-     * Get the attributes that should be cast.
+     * Get the identifier that will be stored in the subject claim of the JWT.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    protected function casts(): array
+    public function getJWTIdentifier()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

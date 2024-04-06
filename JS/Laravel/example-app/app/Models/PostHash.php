@@ -18,4 +18,9 @@ class PostHash extends Model
     use HasFactory;
 
     protected $table = "post_hashes";
+    protected $fillable = [
+        'post_id',
+        'hash_tag'
+    ];
+    public $timestamps = false;
 }

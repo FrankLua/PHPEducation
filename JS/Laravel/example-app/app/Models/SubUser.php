@@ -17,5 +17,12 @@ class SubUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'influence_id',
+        'subscribe_id'
+    ];
+    public $timestamps = false;
     protected $table = "sub_users";
+
+
 }

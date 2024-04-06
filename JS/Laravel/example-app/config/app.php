@@ -1,5 +1,9 @@
 <?php
 
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTFactory;
+use Tymon\JWTAuth\Providers\LaravelServiceProvider;
+
 return [
 
     /*
@@ -121,6 +125,6 @@ return [
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
-    ],
+    ]
 
 ];

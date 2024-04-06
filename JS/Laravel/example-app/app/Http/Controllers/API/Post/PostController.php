@@ -15,32 +15,44 @@ use Illuminate\Support\Facades\Auth;
  * @category Controller;
  * @package  App\Http\Controllers\API\Post;
  */
-class PostAPIController extends Controller
+class PostController extends Controller
 {
     /**
      * getPosts return json all posts with pagination (5)
      *
      * @return void
      */
-    public function getPosts()
+    public function getById()
     {
-        $posts = $this->postService->getPostByPagination();
-        return view('post.postsList', compact('posts'))->render();
+        $id = request()->query('id');
+        return $this->postService->getOneById($id);
+        //return view('post.postsList', compact('posts'))->render(); For views old version
     }
-
     /**
      * getMyPosts return json, posts by client, with pagination (5)
      *
      * @return void
      */
-    public function getMyPosts()
+    public function getMainPost()
     {
         $user = Auth::user();
-        if (empty($user)) {
-            abort(403);
-        }
-        $posts = $this->postService->getPostByUserId($user->id);
-        return view('post.myPostsUpdate', compact('posts'))->render();
+        $posts = $this->postService->getMyNews($user->id, $user->tag);
+        return response()->json($posts);
+    }
+    public function getPostByUser()
+    {
+        $reqest = request()->query('tag');
+
+        $user = $this->userService->getUserByTag($reqest);
+
+        return $this->postService->getPostByUser($user->id, $user->tag);
+    }
+
+    public function getPostByHash()
+    {
+        $reqest = request(['hash_tag']);
+
+        return $this->postService->getPostByHash($reqest['hash_tag']);
     }
 
     /**

@@ -55,7 +55,7 @@ class PostController extends Controller
             abort(403);
         }
 
-        $posts = $this->postService->getPostByUserId($user->id);
+        $posts = $this->postService->getMyNews($user->id);
 
         return view('post.myPosts', compact('posts'));
     }

@@ -13,15 +13,16 @@ return new class extends Migration {
         Schema::create('sub_users', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('influence_id')->unsigned();
+            $table->unsignedBigInteger('subscribe_id')->unsigned();
 
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('usersub_id');
+            $table->unique(['influence_id', 'subscribe_id']);
 
-            $table->index('user_id', 'sub_user_user_idx');
-            $table->foreign('user_id', 'sub_user_user_fk')->on('users')->references('id');
+            $table->index('influence_id', 'sub_users_influence_idx');
+            $table->foreign('influence_id', 'sub_users_influence_fk')->on('users')->references('id');
 
-
-            $table->foreign('usersub_id', 'sub_usersub_user_fk')->on('users')->references('id');
+            $table->index('subscribe_id', 'sub_users_subscribe_idx');
+            $table->foreign('subscribe_id', 'sub_users_subscribe_fk')->on('users')->references('id');
 
         });
     }
