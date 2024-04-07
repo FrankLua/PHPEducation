@@ -37,10 +37,19 @@ class UserController extends Controller
         $id = request('id');
         return $this->userService->getUserById($id);
     }
-    public function subscribeUser()
+    /**
+     * subscribeUser
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function subscribeUser(HttpRequest $request)
     {
+        $request = $request->validate([
+            'influence_id' => 'required',
+        ]);
         $params = [
-            'influence_id' => request('influence_id'),
+            'influence_id' => $request['influence_id'],
             'subscribe_id' => Auth::user()->id
         ];
 
@@ -49,10 +58,18 @@ class UserController extends Controller
 
         return $result;
     }
-    public function unSubscribeUser()
+    /**
+     * unSubscribeUser
+     *
+     * @return mixed
+     */
+    public function unSubscribeUser(HttpRequest $request): mixed
     {
+        $request = $request->validate([
+            'influence_id' => 'required',
+        ]);
         $params = [
-            'influence_id' => request('influence_id'),
+            'influence_id' => $request['influence_id'],
             'subscribe_id' => Auth::user()->id
         ];
 

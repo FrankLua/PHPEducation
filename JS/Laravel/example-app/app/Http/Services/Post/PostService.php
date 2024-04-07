@@ -31,6 +31,7 @@ class PostService
      */
     public function saveOne(mixed $post): int
     {
+
         $user = Auth::user();
         $post = [
             "user_id" => $user->id,
@@ -48,11 +49,17 @@ class PostService
         try {
             $model = Post::create($post);
             $id = $model->id;
-            $this->setTag($tags, $id);
-            $this->setHash($hash, $id);
+            try {
+                $this->setTag($tags, $id);
+                $this->setHash($hash, $id);
+            } catch (Exception $e) {
+                $model->delete();
+                throw new Exception('', 400);
+            }
             return $id;
         } catch (Exception $e) {
-            abort(500);
+            $code = $e->getCode();
+            abort($code);
         }
     }
     private function setTag(array $tags, int $postId)
@@ -64,7 +71,6 @@ class PostService
             ];
             PostTag::create($data);
         }
-        ;
     }
     private function setHash(array $hashs, int $postId)
     {
@@ -96,19 +102,29 @@ class PostService
         $postUser = $this->getByUserId($id);
         $postByTag = $this->getPostByTag($tag);
         $result = array_merge($postByTag, $postUser);
-        return $this->prepareResult($result);
+        $result = $this->prepareResult($result);
+        if (count($result) == 0) {
+            abort(404);
+        }
+        return $result;
     }
     public function getPostByHash(string $hash)
     {
-        $post_hashes = PostHash::where('hash_tag', $hash)
-            ->select('post_id')
-            ->get()
-            ->toArray();
-        $result = Post::whereIn('id', $post_hashes)
-            ->orderBy('create_date')
-            ->get()
-            ->toArray();
-        return $result;
+        try {
+            $post_hashes = PostHash::where('hash_tag', $hash)
+                ->select('post_id')
+                ->get()
+                ->toArray();
+            $result = Post::whereIn('id', $post_hashes)
+                ->orderBy('create_date')
+                ->get()
+                ->toArray();
+            return $result;
+        } catch (Exception $e) {
+            abort(500);
+        }
+
+
     }
     private function prepareResult($result)
     {

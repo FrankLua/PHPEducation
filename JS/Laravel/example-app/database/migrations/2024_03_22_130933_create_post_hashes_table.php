@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('hash_tag');
 
             $table->index('post_id', 'post_hash_post_idx');
-            $table->foreign('post_id', 'post_hash_post_fk')->on('posts')->references('id');
+            $table->foreign('post_id', 'post_hash_post_fk')->on('posts')->references('id')->onDelete('cascade');
         });
     }
 

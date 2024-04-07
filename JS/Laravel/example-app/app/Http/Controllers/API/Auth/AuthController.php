@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Post\PostService;
 use App\Http\Services\User\UserService;
+use Illuminate\Http\Request as HttpRequest;
 
 class AuthController extends Controller
 {
@@ -25,9 +26,12 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(HttpRequest $request)
     {
-        $credentials = request(['email', 'password']);
+        $credentials = $request->validate([
+            'password' => 'required|max:50|min:8',
+            'email' => 'required|max:50|min:4'
+        ]);
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
@@ -37,17 +41,20 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a JWT via given credentials.
+     * Register user
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register()
+    public function register(HttpRequest $request)
     {
-        $credentials = request(['email', 'password', 'name']);
-        $this->userService->addOne($credentials);
-        $credentials = request(['email', 'password']);
-        $token = auth()->attempt($credentials);
-        return $this->respondWithToken($token);
+        $credentials = $request->validate([
+            'password' => 'required|max:50|min:8',
+            'email' => 'required|max:50|min:4',
+            'name' => 'required|max:50|min:4',
+        ]);
+
+        $result = $this->userService->addOne($credentials);
+        return response()->json(['id' => $result], 201);
     }
 
     /**

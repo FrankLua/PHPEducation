@@ -22,10 +22,12 @@ class PostController extends Controller
      *
      * @return void
      */
-    public function getById()
+    public function getById(HttpRequest $request)
     {
-        $id = request()->query('id');
-        return $this->postService->getOneById($id);
+        $request = $request->validate([
+            'id' => 'required',
+        ]);
+        return $this->postService->getOneById($request['id']);
         //return view('post.postsList', compact('posts'))->render(); For views old version
     }
     /**
@@ -39,20 +41,45 @@ class PostController extends Controller
         $posts = $this->postService->getMyNews($user->id, $user->tag);
         return response()->json($posts);
     }
-    public function getPostByUser()
+    /**
+     * getPostByUser
+     *
+     * @return mixed
+     */
+    public function getPostByUser(HttpRequest $request): mixed
     {
-        $reqest = request()->query('tag');
+        $request = $request->validate([
+            'tag' => 'required|max:255',
+        ]);
 
-        $user = $this->userService->getUserByTag($reqest);
+        $user = $this->userService->getUserByTag($request['tag']);
+
+        if ($user == null) {
+            return response(null, 404);
+        }
 
         return $this->postService->getPostByUser($user->id, $user->tag);
     }
 
-    public function getPostByHash()
+    /**
+     * getPostByHash
+     *
+     * @return mixed
+     */
+    public function getPostByHash(HttpRequest $request): mixed
     {
-        $reqest = request(['hash_tag']);
+        $request = $request->validate([
+            'hash_tag' => 'required|max:255',
+        ]);
 
-        return $this->postService->getPostByHash($reqest['hash_tag']);
+        $result = $this->postService->getPostByHash($request['hash_tag']);
+
+
+        if (count($result) == 0) {
+            return response(null, 404);
+        }
+
+        return $result;
     }
 
     /**
@@ -76,14 +103,14 @@ class PostController extends Controller
      *
      * @return void code status
      */
-    public function destroy()
+    public function destroy(HttpRequest $request)
     {
+
+        $request = $request->validate([
+            'id' => 'required|max:255',
+        ]);
         $user = Auth::user();
-        if (empty($user)) {
-            abort(403);
-        }
-        $id = request('id');
-        $this->postService->deletePostById($id, $user->id);
+        $this->postService->deletePostById($request['id'], $user->id);
         return response()->json([], 204);
     }
 }

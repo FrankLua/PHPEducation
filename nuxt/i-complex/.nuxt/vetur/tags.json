@@ -1,0 +1,17 @@
+{
+  "BaseModal": {
+    "description": "Auto imported from components/BaseModal.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "NavBar": {
+    "description": "Auto imported from components/NavBar.vue"
+  },
+  "SearchHash": {
+    "description": "Auto imported from components/SearchHash.vue"
+  },
+  "SearchPerson": {
+    "description": "Auto imported from components/SearchPerson.vue"
+  }
+}

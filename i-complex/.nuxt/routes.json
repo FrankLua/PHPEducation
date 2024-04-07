@@ -1,0 +1,72 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\about.vue",
+    "chunkName": "pages/about",
+    "_name": "_e8831712"
+  },
+  {
+    "name": "posts",
+    "path": "/posts",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\posts\\\\index.vue",
+    "chunkName": "pages/posts/index",
+    "_name": "_0fc81c25"
+  },
+  {
+    "name": "users",
+    "path": "/users",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\users\\\\index.vue",
+    "chunkName": "pages/users/index",
+    "_name": "_b02ff260"
+  },
+  {
+    "name": "auth-login",
+    "path": "/auth/login",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\auth\\\\login.vue",
+    "chunkName": "pages/auth/login",
+    "_name": "_1008faab"
+  },
+  {
+    "name": "auth-registration",
+    "path": "/auth/registration",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\auth\\\\registration.vue",
+    "chunkName": "pages/auth/registration",
+    "_name": "_69bd1e67"
+  },
+  {
+    "name": "posts-postSearchHash",
+    "path": "/posts/postSearchHash",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\posts\\\\postSearchHash.vue",
+    "chunkName": "pages/posts/postSearchHash",
+    "_name": "_4cf373d3"
+  },
+  {
+    "name": "posts-postSearchPerson",
+    "path": "/posts/postSearchPerson",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\posts\\\\postSearchPerson.vue",
+    "chunkName": "pages/posts/postSearchPerson",
+    "_name": "_1da0bb5a"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_a9136188"
+  },
+  {
+    "name": "posts-id",
+    "path": "/posts/:id",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\posts\\\\_id.vue",
+    "chunkName": "pages/posts/_id",
+    "_name": "_5e88e3cd"
+  },
+  {
+    "name": "users-id",
+    "path": "/users/:id",
+    "component": "C:\\\\Users\\\\sosis\\\\Desktop\\\\nonhuman\\\\dd\\\\pages\\\\users\\\\_id.vue",
+    "chunkName": "pages/users/_id",
+    "_name": "_272d0590"
+  }
+]

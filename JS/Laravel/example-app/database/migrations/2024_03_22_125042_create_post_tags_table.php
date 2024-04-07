@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->foreign('user_tag', 'post_tag_user_fk')->on('users')->references('tag');
 
             $table->index('post_id', 'post_tag_post_idx');
-            $table->foreign('post_id', 'post_tag_post_fk')->on('posts')->references('id');
+            $table->foreign('post_id', 'post_tag_post_fk')->on('posts')->references('id')->onDelete('cascade');
 
         });
     }
