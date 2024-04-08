@@ -4,16 +4,16 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _8780b8c2 = () => interopDefault(import('..\\pages\\about.vue' /* webpackChunkName: "pages/about" */))
-const _0e930ffd = () => interopDefault(import('..\\pages\\posts\\index.vue' /* webpackChunkName: "pages/posts/index" */))
-const _b29a0ab0 = () => interopDefault(import('..\\pages\\users\\index.vue' /* webpackChunkName: "pages/users/index" */))
-const _b6b7a85a = () => interopDefault(import('..\\pages\\auth\\login.vue' /* webpackChunkName: "pages/auth/login" */))
-const _54f05f82 = () => interopDefault(import('..\\pages\\auth\\registration.vue' /* webpackChunkName: "pages/auth/registration" */))
-const _25c152fb = () => interopDefault(import('..\\pages\\posts\\postSearchHash.vue' /* webpackChunkName: "pages/posts/postSearchHash" */))
-const _0b191efc = () => interopDefault(import('..\\pages\\posts\\postSearchPerson.vue' /* webpackChunkName: "pages/posts/postSearchPerson" */))
-const _48110338 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
-const _62a224b6 = () => interopDefault(import('..\\pages\\posts\\_id.vue' /* webpackChunkName: "pages/posts/_id" */))
-const _5c8f8710 = () => interopDefault(import('..\\pages\\users\\_id.vue' /* webpackChunkName: "pages/users/_id" */))
+const _bd1dc894 = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _4c008b02 = () => interopDefault(import('../pages/posts/index.vue' /* webpackChunkName: "pages/posts/index" */))
+const _08324e74 = () => interopDefault(import('../pages/users/index.vue' /* webpackChunkName: "pages/users/index" */))
+const _d9a2f72e = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
+const _c5ca7a2e = () => interopDefault(import('../pages/auth/registration.vue' /* webpackChunkName: "pages/auth/registration" */))
+const _463f5ab9 = () => interopDefault(import('../pages/posts/postSearchHash.vue' /* webpackChunkName: "pages/posts/postSearchHash" */))
+const _18e2fe80 = () => interopDefault(import('../pages/posts/postSearchPerson.vue' /* webpackChunkName: "pages/posts/postSearchPerson" */))
+const _7dae130a = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _7a2f5eb2 = () => interopDefault(import('../pages/posts/_id.vue' /* webpackChunkName: "pages/posts/_id" */))
+const _7d295ddc = () => interopDefault(import('../pages/users/_id.vue' /* webpackChunkName: "pages/users/_id" */))
 
 const emptyFn = () => {}
 
@@ -28,43 +28,43 @@ export const routerOptions = {
 
   routes: [{
     path: "/about",
-    component: _8780b8c2,
+    component: _bd1dc894,
     name: "about"
   }, {
     path: "/posts",
-    component: _0e930ffd,
+    component: _4c008b02,
     name: "posts"
   }, {
     path: "/users",
-    component: _b29a0ab0,
+    component: _08324e74,
     name: "users"
   }, {
     path: "/auth/login",
-    component: _b6b7a85a,
+    component: _d9a2f72e,
     name: "auth-login"
   }, {
     path: "/auth/registration",
-    component: _54f05f82,
+    component: _c5ca7a2e,
     name: "auth-registration"
   }, {
     path: "/posts/postSearchHash",
-    component: _25c152fb,
+    component: _463f5ab9,
     name: "posts-postSearchHash"
   }, {
     path: "/posts/postSearchPerson",
-    component: _0b191efc,
+    component: _18e2fe80,
     name: "posts-postSearchPerson"
   }, {
     path: "/",
-    component: _48110338,
+    component: _7dae130a,
     name: "index"
   }, {
     path: "/posts/:id",
-    component: _62a224b6,
+    component: _7a2f5eb2,
     name: "posts-id"
   }, {
     path: "/users/:id",
-    component: _5c8f8710,
+    component: _7d295ddc,
     name: "users-id"
   }],
 

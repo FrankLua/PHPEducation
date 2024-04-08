@@ -1,11 +1,11 @@
 <template>
-    <section>       
+    <section>
         <h1 class="page-title">Найти пост по нику</h1>
         <div class="search-bar" >
-            <form action="" @submit.prevent="findPost()">  
+            <form action="" @submit.prevent="findPost()">
                 <div class="alert alert-danger" role="alert" v-show="validateProp.isValidSearch">
                     {{this.validateProp.message}}
-                </div>                
+                </div>
             <input type="text" class="form-control" v-model="userTag" placeholder="Ivan">
             <div class="alert alert-primary" role="alert">
                     Напишите тэг пользователя который желаете найти
@@ -13,23 +13,23 @@
             <button class="btn btn-info"> Найти </button>
             </form>
         </div>
-    </section>    
+    </section>
 </template>
 <script>
 import validate from '~/mixins/validate/validate';
 
 export default {
-    
+
     async created() {
     if(this.$route.query.userTag != null){
-        let query = this.$route.query.userTag.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+        let query = this.$route.query.userTag.replace(/[&\/\\#,+()$~%.'":*@<>{}]/g, '');
         if(!this.validate(query)){
                 return
         };
 
         this.userTag = query;
 
-        let data = await this.callApi(`api/post/getpostbyuser?tag=${query}`,'get')               
+        let data = await this.callApi(`api/post/getpostbyuser?tag=${query}`,'get')
 
        this.handleResponse(data);
     }
@@ -45,7 +45,7 @@ export default {
     },
     methods:{
         async findPost(){
-            let query = this.userTag.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+            let query = this.userTag.replace(/[&\/\\#,+()$~%.'":*@<>{}]/g, '');
 
 
             if(!this.validate(query)){
@@ -56,7 +56,7 @@ export default {
 
             this.handleResponse(data);
         },
-        validate(userTag){            
+        validate(userTag){
             if(!validate.validateLength(userTag,4,30)){
                 this.validateProp.message = "Тэг пользователя должен быть не меньше 4 символов и не более 30";
                 this.validateProp.isValidSearch = true;

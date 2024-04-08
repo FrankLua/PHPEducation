@@ -1,11 +1,11 @@
 <template>
-    <section>       
+    <section>
         <h1 class="page-title">Найти пост по хэштегу</h1>
         <div class="search-bar" >
-            <form action="" @submit.prevent="findPost()">
+            <form action="" @submit.prevent="findPost(hash)">
                 <div class="alert alert-danger" role="alert" v-show="validateProp.isValidSearch">
                     {{this.validateProp.message}}
-                </div>            
+                </div>
             <input type="text" class="form-control" v-model="hash" placeholder="Музыка">
                 <div class="alert alert-primary" role="alert">
                     Напишите хэштег который желаете найти
@@ -13,25 +13,17 @@
             <button class="btn btn-info"> Найти </button>
             </form>
         </div>
-    </section>    
+    </section>
 </template>
 <script>
 import validate from '~/mixins/validate/validate';
 export default {
     async created() {
-    
+
     if(this.$route.query.hash != null){
-        let query = this.$route.query.hash.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')
-        if(!this.validate(query)){
-            return
-        };
-        this.hash = query;
+      this.findPost(this.$route.query.hash)
 
-        let data = await this.callApi(`api/post/getpostbyhash?hash_tag=${query}`,'get');
 
-        this.handleResponse(data);
-
-        
     }
   },
     data(){
@@ -44,17 +36,18 @@ export default {
         };
     },
     methods:{
-        async findPost(){
+        async findPost(query){
 
-            let query = this.hash.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')
-            console.log(query)
 
-            if(!this.validate(query)){
+            let prepaedQuery = query.replace(/[&\/\\#,+()$~%.'":*<>{}]/g, '')
+            console.log(prepaedQuery)
+
+            if(!this.validate(prepaedQuery)){
                 return
             };
 
-            let data = await this.callApi(`api/post/getpostbyhash?hash_tag=${query}`,'get');
-            
+            let data = await this.callApi(`api/post/getpostbyhash?hash_tag=${prepaedQuery}`,'get');
+
             this.handleResponse(data);
         },
         validate(hash){
@@ -66,6 +59,8 @@ export default {
             return true;
         },
         handleResponse(data){
+          debugger
+          console.log(data);
              switch(data.status){
                 case 200:{
                     this.$emit('find-post',data.data)

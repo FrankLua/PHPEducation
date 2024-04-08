@@ -28,11 +28,11 @@ class AuthController extends Controller
      */
     public function login(HttpRequest $request)
     {
-        $credentials = $request->validate([
+        /* $credentials = $request->validate([
             'password' => 'required|max:50|min:8',
             'email' => 'required|max:50|min:4'
-        ]);
-
+        ]); */
+        $credentials = request(['email', 'password']);
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

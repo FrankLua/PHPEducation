@@ -1,5 +1,5 @@
 <template>
-    <section>        
+    <section>
     <SearchPersonVue @find-post="resivePosts"></SearchPersonVue>
     <div class="list-posts">
             <div v-for="post of posts" :key="post.id" class="post-item">
@@ -14,13 +14,13 @@
             </div>
         </div>
     </section>
-    
+
 </template>
 <script>
 import SearchPersonVue from '~/components/SearchPerson.vue';
 
 export default{
-  components: { SearchPersonVue },  
+  components: { SearchPersonVue },
     data: () => ({
         pageTitle: "Поиск постов",
         posts: []
@@ -31,13 +31,12 @@ export default{
             this.posts = data;
         },
         resivePosts(data){
-            debugger
             this.posts = data;
         },
         openPost(id) {
             this.$router.push('/posts/' + id);
         }
     }
-    
+
 }
 </script>

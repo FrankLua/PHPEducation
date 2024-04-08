@@ -1,8 +1,8 @@
-export { default as BaseModal } from '../..\\components\\BaseModal.vue'
-export { default as Footer } from '../..\\components\\Footer.vue'
-export { default as NavBar } from '../..\\components\\NavBar.vue'
-export { default as SearchHash } from '../..\\components\\SearchHash.vue'
-export { default as SearchPerson } from '../..\\components\\SearchPerson.vue'
+export { default as BaseModal } from '../../components/BaseModal.vue'
+export { default as Footer } from '../../components/Footer.vue'
+export { default as NavBar } from '../../components/NavBar.vue'
+export { default as SearchHash } from '../../components/SearchHash.vue'
+export { default as SearchPerson } from '../../components/SearchPerson.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

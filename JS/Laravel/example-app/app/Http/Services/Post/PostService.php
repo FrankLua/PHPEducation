@@ -36,7 +36,7 @@ class PostService
         $post = [
             "user_id" => $user->id,
             "user_tag" => $user->tag,
-            'short_content' => substr($post['content'], 0, 40),
+            'short_content' => mb_substr($post['content'], 0, 40, 'UTF-8'),
             "title" => $post['title'],
             "content" => $post['content'],
         ];
@@ -49,8 +49,11 @@ class PostService
         try {
             $model = Post::create($post);
             $id = $model->id;
+
             try {
+
                 $this->setTag($tags, $id);
+
                 $this->setHash($hash, $id);
             } catch (Exception $e) {
                 $model->delete();
@@ -58,6 +61,7 @@ class PostService
             }
             return $id;
         } catch (Exception $e) {
+
             $code = $e->getCode();
             abort($code);
         }
@@ -69,7 +73,9 @@ class PostService
                 'user_tag' => $tag,
                 'post_id' => $postId,
             ];
+
             PostTag::create($data);
+
         }
     }
     private function setHash(array $hashs, int $postId)
@@ -149,7 +155,7 @@ class PostService
         $postWhereMe = $this->getPostByTag($userTag);
         $result = array_merge($postUser, $subScribePost, $postWhereMe);
         $result = array_unique($result, SORT_REGULAR);
-        $result = Sort::sortPostByTime($result);
+        Sort::sortPostByTime($result);
 
 
         return array_slice($result, 0, 30);

@@ -10,9 +10,15 @@ export const mutations = {
     },
     deletePost(state, id) {
         state.posts = state.posts.filter(item => item.id !== id);
+    },
+    deleteAll(state){
+        state.posts = [];
     }
 }
 export const actions = {
+    async deleteAll({commit}) {
+      commit('deleteAll')
+    },
     async deleteOne({ commit }, id) {
         const posts = await this.$axios.$delete(`api/post/destroy?id=${id}`);
         commit('deletePost', id)

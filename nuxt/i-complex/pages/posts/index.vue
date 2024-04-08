@@ -1,6 +1,6 @@
 <template>
-    <div>        
-        <h1 class="page-title"> {{ pageTitle }} </h1>        
+    <div>
+        <h1 class="page-title"> {{ pageTitle }} </h1>
         <div class="list-posts">
             <div class="">
                 <button @click="updatePost()" class="btn btn-secondary"> Обновить
@@ -15,20 +15,21 @@
                     {{ post.content }} ...
                 </p>
                 <h3> {{ post.create_date }}</h3>
-                <div class="post-one-dashbord">                    
+                <div class="post-one-dashbord">
                     <button class = "btn btn-info" @click.prevent="openPost(post.id)"> Узнать по подробнее </button>
-                    <button class="btn btn-danger" v-if="post.user_id == $auth.user.id" @click="deletePost(post.id)"> Удалить</button>                
+                    <button class="btn btn-danger" v-if="post.user_id == $auth.user.id" @click="deletePost(post.id)"> Удалить</button>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-export default{    
-    async mounted() {
-        if(this.$store.getters['posts/allPosts'].length === 0 ){            
-            await this.$store.dispatch('posts/fetchPosts');
+export default{
+    async asyncData({store}) {
+      console.log(store)
+        if(store.getters['posts/allPosts'].length === 0 ){
+            await store.dispatch('posts/fetchPosts');
         }
     },
     computed: {
@@ -41,13 +42,13 @@ export default{
     }),
     methods: {
         async deletePost(id){
-            this.$store.dispatch('posts/deleteOne',id)       
+            this.$store.dispatch('posts/deleteOne',id)
         },
         async updatePost(){
-            await this.$store.dispatch('posts/fetchPosts'); 
+            await this.$store.dispatch('posts/fetchPosts');
             let posts = this.$store.getters['posts/getPosts'];
             this.postsUpdate = posts
-        },        
+        },
         openPost(id) {
             this.$router.push('/posts/' + id);
         }
@@ -64,7 +65,7 @@ export default{
 }
 .list-posts{
     text-align: center;
-    width: 100%;    
+    width: 100%;
 }
 .post-item{
     margin-top: 10px;

@@ -2,71 +2,71 @@
   {
     "name": "about",
     "path": "/about",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\about.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/about.vue",
     "chunkName": "pages/about",
-    "_name": "_8780b8c2"
+    "_name": "_bd1dc894"
   },
   {
     "name": "posts",
     "path": "/posts",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\posts\\\\index.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/posts/index.vue",
     "chunkName": "pages/posts/index",
-    "_name": "_0e930ffd"
+    "_name": "_4c008b02"
   },
   {
     "name": "users",
     "path": "/users",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\users\\\\index.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/users/index.vue",
     "chunkName": "pages/users/index",
-    "_name": "_b29a0ab0"
+    "_name": "_08324e74"
   },
   {
     "name": "auth-login",
     "path": "/auth/login",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\auth\\\\login.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/auth/login.vue",
     "chunkName": "pages/auth/login",
-    "_name": "_b6b7a85a"
+    "_name": "_d9a2f72e"
   },
   {
     "name": "auth-registration",
     "path": "/auth/registration",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\auth\\\\registration.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/auth/registration.vue",
     "chunkName": "pages/auth/registration",
-    "_name": "_54f05f82"
+    "_name": "_c5ca7a2e"
   },
   {
     "name": "posts-postSearchHash",
     "path": "/posts/postSearchHash",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\posts\\\\postSearchHash.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/posts/postSearchHash.vue",
     "chunkName": "pages/posts/postSearchHash",
-    "_name": "_25c152fb"
+    "_name": "_463f5ab9"
   },
   {
     "name": "posts-postSearchPerson",
     "path": "/posts/postSearchPerson",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\posts\\\\postSearchPerson.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/posts/postSearchPerson.vue",
     "chunkName": "pages/posts/postSearchPerson",
-    "_name": "_0b191efc"
+    "_name": "_18e2fe80"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\index.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_48110338"
+    "_name": "_7dae130a"
   },
   {
     "name": "posts-id",
     "path": "/posts/:id",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\posts\\\\_id.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/posts/_id.vue",
     "chunkName": "pages/posts/_id",
-    "_name": "_62a224b6"
+    "_name": "_7a2f5eb2"
   },
   {
     "name": "users-id",
     "path": "/users/:id",
-    "component": "D:\\\\OSPanel\\\\domains\\\\PHPEducation\\\\nuxt\\\\i-complex\\\\pages\\\\users\\\\_id.vue",
+    "component": "/home/stajer/Рабочий стол/PHPEducation-main/PHPEducation/nuxt/i-complex/pages/users/_id.vue",
     "chunkName": "pages/users/_id",
-    "_name": "_5c8f8710"
+    "_name": "_7d295ddc"
   }
 ]

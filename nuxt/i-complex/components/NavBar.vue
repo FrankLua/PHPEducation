@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Bitter</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">                    
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" v-if="$auth.loggedIn">
                         <nuxt-link active-class="active" class="nav-link" to="/posts">Моя лента</nuxt-link>
                     </li>
@@ -15,7 +15,7 @@
                     </li>
                     <li class="nav-item" v-if="$auth.loggedIn">
                         <nuxt-link active-class=" active" class="nav-link" to="/users">Пользователи</nuxt-link>
-                    </li>                    
+                    </li>
                     <li class="nav-item" v-if="$auth.loggedIn">
                         <a active-class="active" class="nav-link" v-on:click="openModal() ">Написать пост</a>
                     </li>
@@ -23,12 +23,12 @@
                         <nuxt-link active-class="active" class="nav-link" to="/auth/login">Войти</nuxt-link>
                     </li>
                     <li class="nav-item" v-if="$auth.loggedIn">
-                        <a @click.prevent="$auth.logout()" active-class="active" class="nav-link">Выйти</a>
+                        <a @click.prevent="logOut()" active-class="active" class="nav-link">Выйти</a>
                     </li>
                     <li class="nav-item" v-if="!$auth.loggedIn">
                         <nuxt-link active-class="active" class="nav-link"
                             to="/auth/registration">Регистрация</nuxt-link>
-                    </li>  
+                    </li>
                 </ul>
                  <span class="navbar-text" v-if="$auth.loggedIn">
                     Вы авторизованны
@@ -50,7 +50,7 @@
                     </div>
                     <input  v-model.trim="post.title" type="text" placeholder="Заголовок" class="post-input">
                 </div>
-                <div class="form-group">                    
+                <div class="form-group">
                     <textarea v-model.trim="post.content" cols="30" rows="8"
                         class="post-input" placeholder="Содержание">
                     </textarea>
@@ -74,8 +74,8 @@
             return {
                 post:{
                     content:'',
-                    title: '', 
-                },                           
+                    title: '',
+                },
                 showModal: false,
                 message: '',
                 isError: false,
@@ -84,12 +84,12 @@
                     isValidTitle: false,
                     isValidContent: false,
                     content: ''
-                } 
+                }
             }
         },
         methods:{
             openModal(){
-                this.showModal = true;       
+                this.showModal = true;
             },
             closeModal(){
                 this.showModal= false;
@@ -98,21 +98,25 @@
                 if(this.validateParam()){
                     let data = await this.callApi('api/post/store','post',this.post);
                     this.handlerSend(data);
-                }                
+                }
             },
             validateParam() {
                 debugger
                 if(!validate.validateLength(this.post.title,8,80)){
                     this.validate.isValidTitle = true
                     this.validate.title = "Минимальный размер заголовка поста - 8 символов, максимальный 80";
-                    return false;                    
+                    return false;
                 }
                 if(!validate.validateLength(this.post.content,50,255)){
                     this.validate.isValidContent = true
                     this.validate.content = "Минимальный размер контента - 50 символов, максимальный 255"
-                    return false;                                   
+                    return false;
                 }
                 return true
+            },
+            logOut(){
+              this.$store.dispatch('posts/deleteAll');
+              this.$auth.logout();
             },
             handlerSend(data){
                 switch(data.status){
@@ -133,7 +137,7 @@
             }
         }
     }
-    
+
 
 </script>
 
@@ -157,7 +161,7 @@ post-input:focus{
     border: white 1px solid;
 }
 .form-group {
-    
+
     margin-top: 20px;
     >textarea {
         background: #6E757D;
