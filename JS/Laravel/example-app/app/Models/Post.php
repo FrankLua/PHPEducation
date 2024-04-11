@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * PHP version 8.3.3
@@ -30,4 +32,17 @@ class Post extends Model
     public $timestamps = false;
 
     protected $table = "posts";
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function postHash(): HasMany
+    {
+        return $this->hasMany(PostHash::class, 'post_id', 'id');
+    }
+
+
+
+
+
 }

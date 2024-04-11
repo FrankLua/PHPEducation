@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,11 +55,9 @@ class PostController extends Controller
 
         $user = $this->userService->getUserByTag($request['tag']);
 
-        if ($user == null) {
-            return response(null, 404);
-        }
 
-        return $this->postService->getPostByUser($user->id, $user->tag);
+
+        return $user->posts->toArray();
     }
 
     /**
@@ -73,11 +72,6 @@ class PostController extends Controller
         ]);
 
         $result = $this->postService->getPostByHash($request['hash_tag']);
-
-
-        if (count($result) == 0) {
-            return response(null, 404);
-        }
 
         return $result;
     }

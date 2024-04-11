@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * PHP version 8.3.3
@@ -20,7 +24,13 @@ class PostHash extends Model
     protected $table = "post_hashes";
     protected $fillable = [
         'post_id',
-        'hash_tag'
+        'hashtag_id'
     ];
     public $timestamps = false;
+
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
+
 }

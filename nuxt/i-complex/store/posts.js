@@ -1,9 +1,15 @@
 export const state = () => {
-    return { posts: [] }
+    return { posts: [], postsSearch: [] }
 }
 export const mutations = {
+    updateSearchPosts(state, newPosts) {
+        state.postsSearch = newPosts;
+    },
     updatePosts(state, posts) {
         state.posts = posts
+    },
+    deleteAllSearchPosts(state) {
+        state.postsSearch = [];
     },
     setPost(state, post) {
         state.posts.push(post);
@@ -11,13 +17,16 @@ export const mutations = {
     deletePost(state, id) {
         state.posts = state.posts.filter(item => item.id !== id);
     },
-    deleteAll(state){
+    deleteAll(state) {
         state.posts = [];
     }
 }
 export const actions = {
-    async deleteAll({commit}) {
-      commit('deleteAll')
+    deleteAll({ commit }) {
+        commit('deleteAll')
+    },
+    deleteAllSerchPosts({ commit }) {
+        commit('deleteAllSearchPosts');
     },
     async deleteOne({ commit }, id) {
         const posts = await this.$axios.$delete(`api/post/destroy?id=${id}`);
@@ -27,12 +36,32 @@ export const actions = {
         const posts = await this.$axios.$get('api/post/getmyposts');
         commit('updatePosts', posts)
     },
+    async fetchSearchByTag({ commit }, tag) {
+        const posts = await this.$axios.$get(`api/post/getpostbyuser?tag=${tag}`);
+        commit('updateSearchPosts', posts);
+    },
+    async fetchSearchByHash({ commit }, hash) {
+        try {
+            const posts = await this.$axios.$get(`api/post/getpostbyhash?hash_tag=${hash}`);
+            commit('updateSearchPosts', posts);
+            return 200;
+
+        }
+        catch (e) {
+            console.log(e);
+            return 500;
+        }
+
+    },
     async setOne({ commit }, id) {
         const post = await this.$axios.$get(`api/post?id=${id}`);
         commit('setPost', post)
     }
 }
 export const getters = {
+    getSearchPosts(state) {
+        return state.postsSearch;
+    },
     allPosts(state) {
         return state.posts;
     },

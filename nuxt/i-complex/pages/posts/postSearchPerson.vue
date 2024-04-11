@@ -1,6 +1,6 @@
 <template>
     <section>
-    <SearchPersonVue @find-post="resivePosts"></SearchPersonVue>
+    <SearchPersonVue></SearchPersonVue>
     <div class="list-posts">
             <div v-for="post of posts" :key="post.id" class="post-item">
                 <h3>{{ post.title }}</h3>
@@ -20,19 +20,21 @@
 import SearchPersonVue from '~/components/SearchPerson.vue';
 
 export default{
+     async asyncData({store}) {
+        if(store.getters['postsSearch/getSearchPosts'].length !== 0 ){            
+            store.dispatch('postsSearch/deleteAllSerchPosts');
+        }
+    },
   components: { SearchPersonVue },
+  computed:{
+    posts(){
+        return this.$store.getters['postsSearch/getSearchPosts'];
+    }
+  },
     data: () => ({
-        pageTitle: "Поиск постов",
-        posts: []
-
+        pageTitle: "Поиск постов"
     }),
     methods:{
-        setPosts(data){
-            this.posts = data;
-        },
-        resivePosts(data){
-            this.posts = data;
-        },
         openPost(id) {
             this.$router.push('/posts/' + id);
         }

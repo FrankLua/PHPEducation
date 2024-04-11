@@ -59,8 +59,16 @@ class UserService
      */
     public function getUserByTag(string $tag): mixed
     {
-        $user = User::where('tag', $tag)->first();
+        try {
+            $user = User::where('tag', $tag)->first();
 
+            if ($user == null) {
+                throw new Exception('', 404);
+            }
+
+        } catch (Exception $ex) {
+            abort($ex->getCode());
+        }
         return $user;
     }
     /**

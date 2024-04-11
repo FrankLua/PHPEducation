@@ -2,7 +2,7 @@
     <section>
         <h1 class="page-title">Найти пост по нику</h1>
         <div class="search-bar" >
-            <form action="" @submit.prevent="findPost()">
+            <form action="" @submit.prevent="findPost(userTag)">
                 <div class="alert alert-danger" role="alert" v-show="validateProp.isValidSearch">
                     {{this.validateProp.message}}
                 </div>
@@ -17,21 +17,13 @@
 </template>
 <script>
 import validate from '~/mixins/validate/validate';
+import handlerData from '~/mixins/handlerData/handlerData';
 
 export default {
 
     async created() {
     if(this.$route.query.userTag != null){
-        let query = this.$route.query.userTag.replace(/[&\/\\#,+()$~%.'":*@<>{}]/g, '');
-        if(!this.validate(query)){
-                return
-        };
-
-        this.userTag = query;
-
-        let data = await this.callApi(`api/post/getpostbyuser?tag=${query}`,'get')
-
-       this.handleResponse(data);
+        this.findPost(this.$route.query.userTag);
     }
   },
     data(){
@@ -44,17 +36,17 @@ export default {
         };
     },
     methods:{
-        async findPost(){
-            let query = this.userTag.replace(/[&\/\\#,+()$~%.'":*@<>{}]/g, '');
+        async findPost(query){
+            let prepaedQuery = query.replace(/[&\/\\@,+()$~%.'":*<>{}]/g, '');
 
 
-            if(!this.validate(query)){
+            if(!this.validate(prepaedQuery)){
                 return
             };
 
-            let data = await this.callApi(`api/post/getpostbyuser?tag=${query}`,'get')
+            let data = await this.$store.dispatch('postsSearch/fetchSearchByTag',prepaedQuery);
 
-            this.handleResponse(data);
+            this.validateProp = handlerData.handlerSearchPosts(data,this.$store);
         },
         validate(userTag){
             if(!validate.validateLength(userTag,4,30)){
@@ -63,28 +55,6 @@ export default {
                 return false
             }
             return true;
-        },
-        handleResponse(data){
-            debugger
-            switch(data.status){
-                case 200:{
-                    this.$emit('find-post',data.data)
-                    this.validateProp.isValidSearch = false;
-                    break;
-                }
-                case 404:{
-                    this.validateProp.message = "Посты с упоминанием такого пользователя не найдены";
-                    this.$emit('find-post',[])
-                    this.validateProp.isValidSearch = true;
-                    break;
-                }
-                case 500:{
-                    this.validateProp.message = "Что то пошло не так";
-                    this.$emit('find-post',[])
-                    this.validateProp.isValidSearch = true;
-                    break;
-                }
-            }
         }
     }
 }
@@ -94,6 +64,8 @@ export default {
 <style>
 .search-bar{
     text-align: center;
+    padding-bottom: 5px ;
+    border-bottom: 3px black solid;
     >form>button{
         margin-top: 10px;;
     }

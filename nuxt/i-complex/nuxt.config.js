@@ -45,8 +45,15 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    '@cssninja/nuxt-toaster'
+    '@cssninja/nuxt-toaster',
+    'nuxt-history-state'
   ],
+  historyState: {
+    maxHistoryLength: 50, // or any positive integer
+    reloadable: false, // or true
+    overrideDefaultScrollBehavior: true, // or false
+    scrollingElements: '#scroll' // or any selector
+  },
   auth: {
     strategies: {
       local: {

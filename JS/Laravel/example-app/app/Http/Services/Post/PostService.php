@@ -3,10 +3,12 @@
 namespace App\Http\Services\Post;
 
 use App\Helpers\Sort;
+use App\Models\HashTag;
 use App\Models\Post;
 use App\Models\PostHash;
 use App\Models\PostTag;
 use App\Models\SubUser;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -66,6 +68,13 @@ class PostService
             abort($code);
         }
     }
+    /**
+     * setTag
+     *
+     * @param  mixed $tags
+     * @param  mixed $postId
+     * @return void
+     */
     private function setTag(array $tags, int $postId)
     {
         foreach ($tags as $tag) {
@@ -78,18 +87,37 @@ class PostService
 
         }
     }
+    /**
+     * setHash
+     *
+     * @param  mixed $hashs
+     * @param  mixed $postId
+     * @return void
+     */
     private function setHash(array $hashs, int $postId)
     {
         foreach ($hashs as $hashs) {
             $data = [
-                'hash_tag' => $hashs,
-                'post_id' => $postId,
+                'hashtag' => $hashs,
             ];
-            PostHash::create($data);
+            $hashtags = HashTag::createOrFirst($data);
+
+            $dataForPostHashes = [
+                'hashtag_id' => $hashtags->id,
+                'post_id' => $postId
+            ];
+            PostHash::createOrFirst($dataForPostHashes);
         }
         ;
 
     }
+    /**
+     * findWord
+     *
+     * @param  mixed $targetString
+     * @param  mixed $targetChar
+     * @return array
+     */
     private function findWord(string $targetString, string $targetChar): array
     {
         /* */
@@ -103,42 +131,36 @@ class PostService
         }
         return array_unique($result);
     }
-    public function getPostByUser(int $id, string $tag)
-    {
-        $postUser = $this->getByUserId($id);
-        $postByTag = $this->getPostByTag($tag);
-        $result = array_merge($postByTag, $postUser);
-        $result = $this->prepareResult($result);
-        if (count($result) == 0) {
-            abort(404);
-        }
-        return $result;
-    }
+    /**
+     * getPostByHash
+     *
+     * @param  mixed $hash
+     * @return void
+     */
     public function getPostByHash(string $hash)
     {
+        $result = [];
         try {
-            $post_hashes = PostHash::where('hash_tag', $hash)
-                ->select('post_id')
-                ->get()
-                ->toArray();
-            $result = Post::whereIn('id', $post_hashes)
-                ->orderBy('create_date')
-                ->get()
-                ->toArray();
+            $hashTag = HashTag::where('hashtag', $hash)
+                ->first();
+            if ($hashTag == null) {
+                throw new Exception('', 404);
+            }
+
+            foreach ($hashTag->hashTags as $post_hash) {
+                $result[] = $post_hash->post->toArray();
+            }
+
+            if (count($result) == 0) {
+                throw new Exception('', 404);
+            }
             return $result;
         } catch (Exception $e) {
-            abort(500);
+            $code = $e->getCode();
+            abort($code);
         }
 
 
-    }
-    private function prepareResult($result)
-    {
-
-        $result = array_unique($result, SORT_REGULAR);
-        $result = Sort::sortPostByTime($result);
-        $result = array_slice($result, 0, 30);
-        return $result;
     }
 
     /**
@@ -150,7 +172,7 @@ class PostService
     public function getMyNews(int $id, string $userTag): mixed
     {
 
-        $postUser = $this->getByUserId($id);
+        $postUser = Auth::user()->posts->toArray();
         $subScribePost = $this->getSubscribePost($id);
         $postWhereMe = $this->getPostByTag($userTag);
         $result = array_merge($postUser, $subScribePost, $postWhereMe);
@@ -160,35 +182,48 @@ class PostService
 
         return array_slice($result, 0, 30);
     }
-    function timeSort($a, $b)
-    {
-        return strtotime($a['create_date']) - strtotime($b['create_date']);
-    }
+    /**
+     * getPostByTag
+     *
+     * @param  mixed $userTag
+     * @return void
+     */
     private function getPostByTag($userTag)
     {
         $result = [];
-        $postTags = PostTag::where('user_tag', $userTag)->get();
+        $postTags = PostTag::where('user_tag', $userTag)
+            ->get();
 
-        foreach ($postTags as $item) {
-            $result = array_merge(Post::where('id', $item['post_id'])->get()->toArray(), $result);
+        foreach ($postTags as $postTag) {
+            $result = [$postTag->post->toArray()];
         }
         return $result;
 
     }
+    /**
+     * getSubscribePost
+     *
+     * @param  mixed $id
+     * @return array
+     */
     private function getSubscribePost(int $id): array
     {
         $result = [];
         $subscribes = SubUser::where('subscribe_id', $id)
             ->get();
-        foreach ($subscribes as $item) {
-            $result = array_merge(Post::where('user_id', $item['influence_id'])
-                ->get()
-                ->toArray(), $result);
+        foreach ($subscribes as $subscribe) {
+            $result = $subscribe->influenceUser->posts->toArray();
         }
         ;
         return $result;
 
     }
+    /**
+     * getByUserId
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
     public function getByUserId(int $id): mixed
     {
         try {
@@ -215,19 +250,6 @@ class PostService
             abort(403);
         }
     }
-    /**
-     * getPostByPagination return all post is pagination
-     * and sort by date create
-     *
-     *
-     * @return mixed
-     */
-    public function getPostByPagination(): mixed
-    {
-        $data = Post::orderBy('create_data', 'desc')->paginate(5);
-        return $data;
-    }
-
     /**
      * getOneById return one post by id
      *

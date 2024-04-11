@@ -4,7 +4,7 @@
         <div v-for="user of users" :key="user.id" class="item">
             <div class="cart-user">
                 <div class="user-info">
-                    <a href="#" @click.prevent="openUser(user.id)">Профиль</a>
+                    <button class="btn btn-info" @click.prevent="openUser(user.id)">Посмотреть профиль</button>
 
                     <h5>
                         Имя: {{ user.name }}
@@ -46,6 +46,7 @@ export default{
 <style scope>
 .user-info{
     width: 100%; 
+    padding: 10px;
 }
 .wrapper{
     margin: 0 auto;
@@ -65,10 +66,10 @@ export default{
     vertical-align: middle;
 
     >img {
-        margin-top: 4px;
+        margin: 5px;
         border-radius: 10px;
-        width: 80px;
-        height: 80px;
+        width: 110px;
+        height: 110px;
     }
 }
 

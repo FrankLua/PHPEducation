@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * PHP version 8.3.3
@@ -23,6 +25,11 @@ class SubUser extends Model
     ];
     public $timestamps = false;
     protected $table = "sub_users";
+
+    public function influenceUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'influence_id', 'id');
+    }
 
 
 }

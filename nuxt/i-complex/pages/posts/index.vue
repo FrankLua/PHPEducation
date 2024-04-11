@@ -27,7 +27,6 @@
 <script>
 export default{
     async asyncData({store}) {
-      console.log(store)
         if(store.getters['posts/allPosts'].length === 0 ){
             await store.dispatch('posts/fetchPosts');
         }

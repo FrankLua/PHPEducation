@@ -17,18 +17,16 @@
 </template>
 <script>
 import validate from '~/mixins/validate/validate';
+import handlerData from '~/mixins/handlerData/handlerData';
 export default {
     async created() {
-
     if(this.$route.query.hash != null){
-      this.findPost(this.$route.query.hash)
-
-
+      this.findPost(this.$route.query.hash);
     }
   },
     data(){
         return{
-            hash:'',
+            hash:this.$route.query.hash ?? '',
             validateProp:{
                 isValidSearch : false,
                 message:''
@@ -37,18 +35,15 @@ export default {
     },
     methods:{
         async findPost(query){
-
-
-            let prepaedQuery = query.replace(/[&\/\\#,+()$~%.'":*<>{}]/g, '')
-            console.log(prepaedQuery)
+            let prepaedQuery = query.replace(/[&\/\\#,+()$~%.'":*<>{}]/g, '');
 
             if(!this.validate(prepaedQuery)){
                 return
             };
 
-            let data = await this.callApi(`api/post/getpostbyhash?hash_tag=${prepaedQuery}`,'get');
+            let data = await this.$store.dispatch('postsSearch/fetchSearchByHash',prepaedQuery);
 
-            this.handleResponse(data);
+            this.validateProp = handlerData.handlerSearchPosts(data,this.$store);
         },
         validate(hash){
             if(!validate.validateLength(hash,0,50)){
@@ -57,29 +52,6 @@ export default {
                 return false
             }
             return true;
-        },
-        handleResponse(data){
-          debugger
-          console.log(data);
-             switch(data.status){
-                case 200:{
-                    this.$emit('find-post',data.data)
-                    this.validateProp.isValidSearch = false;
-                    break;
-                }
-                case 404:{
-                    this.validateProp.message = "Посты с упоминанием такого хэштега не найдены";
-                    this.$emit('find-post',[])
-                    this.validateProp.isValidSearch = true;
-                    break;
-                }
-                case 500:{
-                    this.validateProp.message = "Что то пошло не так";
-                    this.$emit('find-post',[])
-                    this.validateProp.isValidSearch = true;
-                    break;
-                }
-            }
         }
     }
 }
@@ -89,6 +61,8 @@ export default {
 <style>
 .search-bar{
     text-align: center;
+    padding-bottom: 5px ;
+    border-bottom: 3px black solid;
     >form>button{
         margin-top: 10px;;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -52,4 +53,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    /**
+     * Get the posts for the user.
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
 }

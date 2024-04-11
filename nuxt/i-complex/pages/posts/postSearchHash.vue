@@ -1,6 +1,6 @@
 <template>
     <section>        
-    <SearchHashVue @find-post="resivePosts"></SearchHashVue>
+    <SearchHashVue></SearchHashVue>
     <div class="list-posts">
             <div v-for="post of posts" :key="post.id" class="post-item">
                 <h3>{{ post.title }}</h3>
@@ -21,19 +21,19 @@ import SearchHashVue from '~/components/SearchHash.vue';
 
 
 export default{
-  components: { SearchHashVue },  
-    data: () => ({
-        pageTitle: "Поиск постов",
-        posts: []
-
-    }),
+    async asyncData({store}) {
+        if(store.getters['postsSearch/getSearchPosts'].length !== 0 ){            
+            store.dispatch('postsSearch/deleteAllSerchPosts');
+        }
+    },
+  components: { SearchHashVue },
+  computed:{
+    posts(){
+        return this.$store.getters['postsSearch/getSearchPosts'];
+    }
+  }
+    ,
     methods:{
-        setPosts(data){
-            this.posts = data;
-        },
-        resivePosts(data){
-            this.posts = data;
-        },
         openPost(id) {
             this.$router.push('/posts/' + id);
         }

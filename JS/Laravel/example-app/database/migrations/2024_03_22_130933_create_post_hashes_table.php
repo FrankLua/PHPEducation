@@ -11,13 +11,17 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('post_hashes', function (Blueprint $table) {
-            $table->id();
 
             $table->unsignedBigInteger('post_id');
-            $table->string('hash_tag');
+            $table->unsignedBigInteger('hashtag_id');
+
+            $table->unique(['post_id', 'hashtag_id']);
 
             $table->index('post_id', 'post_hash_post_idx');
             $table->foreign('post_id', 'post_hash_post_fk')->on('posts')->references('id')->onDelete('cascade');
+
+            $table->index('hashtag_id', 'hashtag_hashtag_id_idx');
+            $table->foreign('hashtag_id', 'post_hash_hash_fk')->on('hashetags')->references('id')->onDelete('cascade');
         });
     }
 
