@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "3f2e7c2176275168",
+    "type": "split",
+    "children": [
+      {
+        "id": "b5ab3d3b7cf8fa1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ee08825d3aa16ad6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3 git.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c3f2111eb6a4f558",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "3a9b40e60af040b2",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "045333dba0c45b8c",
+    "type": "split",
+    "children": [
+      {
+        "id": "60a926e0f1425d4d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "54845a44d5f1db80",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2ffa19c6922e9143",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "854a32823ef2c00b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4de67b7f7c447140",
+    "type": "split",
+    "children": [
+      {
+        "id": "5179ffc14a99e5a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "47549c757755e2d1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6618beaf249354b2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "87bf9011e333e8cd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "4d99176f93b4c03f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c3f2111eb6a4f558",
+  "lastOpenFiles": [
+    "10.ArrayInPHP.md",
+    "9.String in PHP.md",
+    "3 git.md",
+    "2 Internet.md",
+    "Атрибуты MySql.md",
+    "42 Create table alter table.md",
+    "РНР.md",
+    "31 GD php.md",
+    "Типы данных MySQL.md",
+    "Internet.md",
+    "1 PHP + and - types.md",
+    "DATE.md",
+    "33 php.ini.md",
+    "PHP.md",
+    "php.md",
+    "43 Index MySQL.md",
+    "Pasted image 20240413213605.png",
+    "Pasted image 20240413213602.png",
+    "42 Create User Alter User Mysql.md"
+  ]
+}

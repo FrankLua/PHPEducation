@@ -1,0 +1,28 @@
+Группировка данных позволяет объединить одинаковые значения в заданных полях в группы, а затем выполнять подсчеты для каждой группы.
+
+SELECT [литералы, агрегатные_функции, поля_группировки]
+FROM имя_таблицы
+GROUP BY поля_группировки;
+
+
+SELECT home_type, "literal" FROM Rooms
+GROUP BY home_type
+
+Групп делит таблицу на группы и понимает эти группы как что то единное то есть 
+SELECT
+    user_id AS student,
+    created_at, выдаёт ошибку потому что не понятно что именно взять из поля каждого участника группы (нужна агрегация)
+    COUNT(user_id) AS courses_count
+FROM course_members
+GROUP BY user_id
+ORDER BY user_id;
+
+SELECT
+    user_id AS student,
+    COUNT(user_id) AS courses_count, 
+    MAX(created_at) AS last_reg
+FROM course_members
+GROUP BY user_id
+ORDER BY user_id;
+
+ вот это будет работать

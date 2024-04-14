@@ -1,0 +1,5 @@
+1. [[VARCHAR(N)]]
+2. [[CHAR(N)]]
+3. [[TEXT]]
+4. [[ DATE]]
+5. [[DATETIME]]
