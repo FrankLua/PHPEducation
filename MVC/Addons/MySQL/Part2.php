@@ -26,7 +26,7 @@
     SELECT * FROM users WHERE fname LIKE 'Ge%';
     Выбирает все записи из таблицы users, где fname заканчивается на na, и упорядочивает записи в порядке возрастания значения id.
 
-    SELECT * FROM users WHERE fname LIKE '%na' ORDER BY id;
+    SELECT * FROM users WHERE name LIKE '%na' ORDER BY id;
 
     DISTINCT - Уникальные записи
 

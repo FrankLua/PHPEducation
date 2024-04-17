@@ -4,35 +4,27 @@
     "type": "split",
     "children": [
       {
-        "id": "b5ab3d3b7cf8fa1b",
+        "id": "6ddd7cc3b5913d05",
         "type": "tabs",
         "children": [
           {
-            "id": "ee08825d3aa16ad6",
+            "id": "be51ad57857edd83",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "1d069605785cb5fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3 git.md",
+                "file": "20-PHP-AbstractClass.md",
                 "mode": "source",
                 "source": false
               }
-            }
-          },
-          {
-            "id": "c3f2111eb6a4f558",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "3a9b40e60af040b2",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
         ],
@@ -102,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "20-PHP-AbstractClass.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "20-PHP-AbstractClass.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "20-PHP-AbstractClass.md"
+              }
             }
           }
         ]
@@ -159,26 +155,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c3f2111eb6a4f558",
+  "active": "1d069605785cb5fa",
   "lastOpenFiles": [
-    "10.ArrayInPHP.md",
-    "9.String in PHP.md",
-    "3 git.md",
-    "2 Internet.md",
-    "Атрибуты MySql.md",
-    "42 Create table alter table.md",
+    "20-PHP-AbstractClass.md",
+    "19-OOP-PHP-TypesAllow.md",
+    "15-OOP-Classes.md",
+    "18-OOP-Inheritance.md",
+    "inheritance.php",
+    "in",
+    "17.OOP-Construct-Deconstruct.md",
+    "25.MagicActives.md",
+    "14. OOP-Paradigms.md",
     "РНР.md",
-    "31 GD php.md",
-    "Типы данных MySQL.md",
-    "Internet.md",
     "1 PHP + and - types.md",
-    "DATE.md",
-    "33 php.ini.md",
-    "PHP.md",
-    "php.md",
+    "ООП.md",
+    "13-PHP-Cookie-Session.md",
+    "47.3-JQuery-CallBack.md",
+    "47.2-JQueryHandleRequest.md",
+    "47.1JQueryAJAX.md",
+    "46.JqueryFunction.md",
+    "45.1JavaScriptObject.md",
+    "44.JavaScriptInfo.md",
+    "45.2JavaScriptAnonimFunction.md",
+    "Pasted image 20240417070738.png",
+    "JQuery.js",
+    "2 Internet.md",
+    "Jquery.md",
+    "45.3.JavaScriptAreaViseble.md",
+    "JavaScript.md",
+    "Internet.md",
+    "index.html",
+    "Function.js",
     "43 Index MySQL.md",
+    "MySQL.md",
+    "30.Hashs.md",
+    "Pasted image 20240415182929.png",
+    "TryCatch.php",
+    "json.php",
+    "Untitled",
+    "Traits.php",
+    "Pasted image 20240415140513.png",
+    "Pasted image 20240415135840.png",
+    "selfAndStatic.php",
+    "Pasted image 20240415131529.png",
+    "Pasted image 20240415125114.png",
+    "Pasted image 20240415124737.png",
+    "Pasted image 20240415124630.png",
     "Pasted image 20240413213605.png",
-    "Pasted image 20240413213602.png",
-    "42 Create User Alter User Mysql.md"
+    "Pasted image 20240413213602.png"
   ]
 }

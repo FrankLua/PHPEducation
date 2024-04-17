@@ -3,9 +3,8 @@
 $message = 'привет';
 
 // Наследуем $message
-$example = function () { 
+$example = function () {
 
-    var_dump($message);
 };
 $example();
 
@@ -17,7 +16,7 @@ $example();
 // Сбросим message
 $message = 'привет';
 
-// Наследование по ссылке
+// Передаётся  по ссылке
 $example = function () use (&$message) {
     var_dump($message);
 };
@@ -41,13 +40,13 @@ $example = function () use ($message): string {
 var_dump($example());
 
 ?>
-Автоматическое связывание 
+Автоматическое связывание
 <?php
 class Test
 {
     public function testing()
     {
-        return function() {
+        return function () {
             var_dump($this); // Доступен экземпляр класса
         };
     }
@@ -65,13 +64,15 @@ class Foo
 {
     function __construct()
     {
-        $func = static function() {
+        $func = static function () {
             var_dump($this); // Не доступен 
         };
         $func();
     }
-};
+}
+;
 new Foo();
 
 ?>
-Замыкание в PHP – это функция, которая может запоминать значения из внешнего контекста, даже когда она вызывается в другом месте программы.
+Замыкание в PHP – это функция, которая может запоминать значения из внешнего контекста, даже когда она вызывается в
+другом месте программы.
