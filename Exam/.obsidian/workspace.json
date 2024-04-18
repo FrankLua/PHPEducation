@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6ddd7cc3b5913d05",
+        "id": "bbe74bd19b9957ae",
         "type": "tabs",
         "children": [
           {
-            "id": "be51ad57857edd83",
+            "id": "35765e7fbd855396",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -16,19 +16,103 @@
             }
           },
           {
-            "id": "1d069605785cb5fa",
+            "id": "4712fcb737af1610",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "20-PHP-AbstractClass.md",
+                "file": "36.1-MySql-Create-DB.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "34d9b73175df4be0",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "5b1ed8530664fe9b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "5-Cycles-PHP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f3ad608c7c311dc2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6.1-Constants-PHP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "606424ce74a1512e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "585a3d156566a4d0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "7-AreaVisebleVariables-PHP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ba46377248109dc9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "8.1-Isset-PHP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3826d69580fed566",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "8.2-empty()-PHP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1b29f341b2faaa0f",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -94,7 +178,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "20-PHP-AbstractClass.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +194,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "20-PHP-AbstractClass.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,9 +215,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "20-PHP-AbstractClass.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -155,8 +235,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1d069605785cb5fa",
+  "active": "1b29f341b2faaa0f",
   "lastOpenFiles": [
+    "8.2-empty()-PHP.md",
+    "8.3-unset-PHP.md",
+    "8.1-Isset-PHP.md",
+    "7-AreaVisebleVariables-PHP.md",
+    "6.1-Constants-PHP.md",
+    "6.2-Fun-PHp.md",
+    "fun.php",
+    "5-Cycles-PHP.md",
+    "36.2-CreateUser-MySql.md",
+    "36.1-MySql-Create-DB.md",
+    "37.MySql.Select.Delete.md",
+    "3.md",
+    "27-RegExpression-PHP.md",
+    "Pasted image 20240417203147.png",
+    "Pasted image 20240417202334.png",
+    "26.Traits.md",
+    "24.This.Self.Static.md",
+    "25.MagicActives.md",
     "20-PHP-AbstractClass.md",
     "19-OOP-PHP-TypesAllow.md",
     "15-OOP-Classes.md",
@@ -164,31 +262,16 @@
     "inheritance.php",
     "in",
     "17.OOP-Construct-Deconstruct.md",
-    "25.MagicActives.md",
     "14. OOP-Paradigms.md",
     "РНР.md",
     "1 PHP + and - types.md",
     "ООП.md",
     "13-PHP-Cookie-Session.md",
     "47.3-JQuery-CallBack.md",
-    "47.2-JQueryHandleRequest.md",
-    "47.1JQueryAJAX.md",
-    "46.JqueryFunction.md",
-    "45.1JavaScriptObject.md",
-    "44.JavaScriptInfo.md",
-    "45.2JavaScriptAnonimFunction.md",
     "Pasted image 20240417070738.png",
     "JQuery.js",
-    "2 Internet.md",
-    "Jquery.md",
-    "45.3.JavaScriptAreaViseble.md",
-    "JavaScript.md",
-    "Internet.md",
     "index.html",
     "Function.js",
-    "43 Index MySQL.md",
-    "MySQL.md",
-    "30.Hashs.md",
     "Pasted image 20240415182929.png",
     "TryCatch.php",
     "json.php",
@@ -196,12 +279,9 @@
     "Traits.php",
     "Pasted image 20240415140513.png",
     "Pasted image 20240415135840.png",
-    "selfAndStatic.php",
     "Pasted image 20240415131529.png",
     "Pasted image 20240415125114.png",
     "Pasted image 20240415124737.png",
-    "Pasted image 20240415124630.png",
-    "Pasted image 20240413213605.png",
-    "Pasted image 20240413213602.png"
+    "Pasted image 20240415124630.png"
   ]
 }

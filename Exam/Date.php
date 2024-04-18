@@ -1,4 +1,7 @@
 <?php
+const A = 5;
+
+runkit_constant_remove('A');
 
 $time = date("Сегодня d.m.y H:i");
 

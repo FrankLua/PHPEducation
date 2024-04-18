@@ -7,22 +7,26 @@ echo 'Foo';
 a:
 echo 'Bar';
 
+function bar()
+{
+
+}
 
 //include включает php скрипт в php скрипт, require  тоже самое, но выдаст фатальную ошибку require_once - включит файл если он ранее небыл подключён выдаёт ошибку, 
-include('IncludeFile.php');
-print($color);
+include ('IncludeFile.php');
+print ($color);
 
 //=================== Этот пример не сработает
 //goto loop;
-for($i=0,$j=50; $i<100; $i++) {
-  while($j--) {
-    //loop:
-  }
+for ($i = 0, $j = 50; $i < 100; $i++) {
+    while ($j--) {
+        //loop:
+    }
 }
 echo "$i = $i";
 
 //Swith приведение к типу ===
-switch(true) {
+switch (true) {
     case $var === null:
         return 'a';
     default:
@@ -44,7 +48,8 @@ const OOO = 1;
 
 // declare используется для установки директив исполнения для блока кода
 //declare(strict_types = 1);
-function foo (int $a, int $b) {
+function foo(int $a, int $b)
+{
 }
 
-foo('2',2);
+foo('2', 2);
