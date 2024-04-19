@@ -1,13 +1,33 @@
 <?php
+class Foo
+{
+    public static $my_static = 'foo';
 
-$var = 0;
-
-// Принимает значение true, потому что переменная $var содержит пустое значение или 0
-if (empty($var)) {
-    echo '$var или 0, или пусто, или вообще не определена';
+    public function staticValue()
+    {
+        return self::$my_static;
+    }
 }
 
-// Принимает значение true, потому что переменная $var определена
-if (isset($var)) {
-    echo '$var определена, даже если она пустая';
+class Bar extends Foo
+{
+    public function fooStatic()
+    {
+        return parent::$my_static;
+    }
 }
+
+
+print Foo::$my_static . "\n";
+
+$foo = new Foo();
+print $foo->staticValue() . "\n";
+print $foo->my_static . "\n";      // Не определено свойство my_static
+
+print $foo::$my_static . "\n";
+$classname = 'Foo';
+print $classname::$my_static . "\n";
+
+print Bar::$my_static . "\n";
+$bar = new Bar();
+print $bar->fooStatic() . "\n";

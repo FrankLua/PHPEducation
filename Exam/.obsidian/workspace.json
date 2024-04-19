@@ -11,108 +11,23 @@
             "id": "35765e7fbd855396",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "4712fcb737af1610",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "36.1-MySql-Create-DB.md",
+                "file": "1 PHP + and - types.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "34d9b73175df4be0",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "5b1ed8530664fe9b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "5-Cycles-PHP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f3ad608c7c311dc2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "6.1-Constants-PHP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "606424ce74a1512e",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "585a3d156566a4d0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "7-AreaVisebleVariables-PHP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ba46377248109dc9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "8.1-Isset-PHP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3826d69580fed566",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "8.2-empty()-PHP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "1b29f341b2faaa0f",
+            "id": "cc011e0dfa43f32a",
             "type": "leaf",
             "state": {
               "type": "graph",
               "state": {}
             }
           }
-        ],
-        "currentTab": 9
+        ]
       }
     ],
     "direction": "vertical"
@@ -141,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "abst",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -178,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "1 PHP + and - types.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -194,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "1 PHP + and - types.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -215,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "1 PHP + and - types.md"
+              }
             }
           }
         ]
@@ -235,39 +154,41 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1b29f341b2faaa0f",
+  "active": "35765e7fbd855396",
   "lastOpenFiles": [
+    "6.2-Fun-PHp.md",
+    "2 Internet.md",
+    "1 PHP + and - types.md",
+    "HTTP.md",
+    "12-post-get-Request.md",
+    "22-Interface-PHP.md",
+    "3 git.md",
+    "Pasted image 20240419072118.png",
+    "23-Static-Filds-MEthods.md",
+    "6.1-Constants-PHP.md",
+    "8.1-Isset-PHP.md",
+    "20-PHP-AbstractClass.md",
+    "21-final-php.md",
+    "16-Fields-Consts-Method-PHP.md",
+    "Pasted image 20240418203338.png",
+    "3.md",
     "8.2-empty()-PHP.md",
     "8.3-unset-PHP.md",
-    "8.1-Isset-PHP.md",
     "7-AreaVisebleVariables-PHP.md",
-    "6.1-Constants-PHP.md",
-    "6.2-Fun-PHp.md",
     "fun.php",
     "5-Cycles-PHP.md",
     "36.2-CreateUser-MySql.md",
     "36.1-MySql-Create-DB.md",
     "37.MySql.Select.Delete.md",
-    "3.md",
     "27-RegExpression-PHP.md",
     "Pasted image 20240417203147.png",
     "Pasted image 20240417202334.png",
     "26.Traits.md",
     "24.This.Self.Static.md",
     "25.MagicActives.md",
-    "20-PHP-AbstractClass.md",
     "19-OOP-PHP-TypesAllow.md",
-    "15-OOP-Classes.md",
-    "18-OOP-Inheritance.md",
     "inheritance.php",
     "in",
-    "17.OOP-Construct-Deconstruct.md",
-    "14. OOP-Paradigms.md",
-    "РНР.md",
-    "1 PHP + and - types.md",
-    "ООП.md",
-    "13-PHP-Cookie-Session.md",
-    "47.3-JQuery-CallBack.md",
     "Pasted image 20240417070738.png",
     "JQuery.js",
     "index.html",
@@ -280,8 +201,6 @@
     "Pasted image 20240415140513.png",
     "Pasted image 20240415135840.png",
     "Pasted image 20240415131529.png",
-    "Pasted image 20240415125114.png",
-    "Pasted image 20240415124737.png",
-    "Pasted image 20240415124630.png"
+    "Pasted image 20240415125114.png"
   ]
 }
