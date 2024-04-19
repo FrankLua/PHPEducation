@@ -1,33 +1,18 @@
 <?php
-class Foo
+trait Fun
 {
-    public static $my_static = 'foo';
+    public static string $name = 'bruh';
 
-    public function staticValue()
+    function foo()
     {
-        return self::$my_static;
-    }
-}
-
-class Bar extends Foo
-{
-    public function fooStatic()
-    {
-        return parent::$my_static;
+        echo self::$name;
     }
 }
 
 
-print Foo::$my_static . "\n";
+class User
+{
+    use Fun;
+}
 
-$foo = new Foo();
-print $foo->staticValue() . "\n";
-print $foo->my_static . "\n";      // Не определено свойство my_static
-
-print $foo::$my_static . "\n";
-$classname = 'Foo';
-print $classname::$my_static . "\n";
-
-print Bar::$my_static . "\n";
-$bar = new Bar();
-print $bar->fooStatic() . "\n";
+echo User::$name;

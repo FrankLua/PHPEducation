@@ -20,6 +20,18 @@
             }
           },
           {
+            "id": "4e50bb1dec90ebd1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "31 GD php.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "cc011e0dfa43f32a",
             "type": "leaf",
             "state": {
@@ -27,7 +39,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -56,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "abst",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1 PHP + and - types.md",
+                "file": "31 GD php.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1 PHP + and - types.md",
+                "file": "31 GD php.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1 PHP + and - types.md"
+                "file": "31 GD php.md"
               }
             }
           }
@@ -154,39 +167,39 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "35765e7fbd855396",
+  "active": "4e50bb1dec90ebd1",
   "lastOpenFiles": [
-    "6.2-Fun-PHp.md",
-    "2 Internet.md",
-    "1 PHP + and - types.md",
-    "HTTP.md",
-    "12-post-get-Request.md",
-    "22-Interface-PHP.md",
-    "3 git.md",
-    "Pasted image 20240419072118.png",
-    "23-Static-Filds-MEthods.md",
-    "6.1-Constants-PHP.md",
-    "8.1-Isset-PHP.md",
-    "20-PHP-AbstractClass.md",
-    "21-final-php.md",
-    "16-Fields-Consts-Method-PHP.md",
-    "Pasted image 20240418203338.png",
-    "3.md",
-    "8.2-empty()-PHP.md",
-    "8.3-unset-PHP.md",
-    "7-AreaVisebleVariables-PHP.md",
-    "fun.php",
-    "5-Cycles-PHP.md",
-    "36.2-CreateUser-MySql.md",
-    "36.1-MySql-Create-DB.md",
-    "37.MySql.Select.Delete.md",
+    "30.Hashs.md",
+    "29.PHP.JSON.md",
+    "28.SerAndDes.md",
     "27-RegExpression-PHP.md",
-    "Pasted image 20240417203147.png",
-    "Pasted image 20240417202334.png",
     "26.Traits.md",
     "24.This.Self.Static.md",
-    "25.MagicActives.md",
+    "23-Static-Filds-MEthods.md",
+    "22-Interface-PHP.md",
+    "21-final-php.md",
+    "20-PHP-AbstractClass.md",
     "19-OOP-PHP-TypesAllow.md",
+    "18-OOP-Inheritance.md",
+    "25.MagicActives.md",
+    "17.OOP-Construct-Deconstruct.md",
+    "16-Fields-Consts-Method-PHP.md",
+    "15-OOP-Classes.md",
+    "14. OOP-Paradigms.md",
+    "13-PHP-Cookie-Session.md",
+    "33 php.ini.md",
+    "1 PHP + and - types.md",
+    "12-post-get-Request.md",
+    "11.Date in PHP.md",
+    "10.ArrayInPHP.md",
+    "9.String in PHP.md",
+    "8.3-unset-PHP.md",
+    "8.1-Isset-PHP.md",
+    "Pasted image 20240419072118.png",
+    "Pasted image 20240418203338.png",
+    "fun.php",
+    "Pasted image 20240417203147.png",
+    "Pasted image 20240417202334.png",
     "inheritance.php",
     "in",
     "Pasted image 20240417070738.png",
